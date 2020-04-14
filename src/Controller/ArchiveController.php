@@ -1,5 +1,5 @@
 <?php
-//dit is de goeie versie
+
 namespace App\Controller;
 
 use App\Entity\Ticket;
