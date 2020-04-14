@@ -1,0 +1,33 @@
+<html>
+<style>
+    body {
+        font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        background-image: url("https://st2.depositphotos.com/5024787/9069/i/950/depositphotos_90690684-stock-photo-vertical-blue-digital-background-with.jpg");
+        font-size: 12px;
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        padding-top: 180px;
+        padding-right: 70px;
+        padding-left: 70px;
+        padding-bottom: 10px;
+        width:100%;
+        height:100%;
+    }
+</style>
+<body>
+Company: {{ workOrder.company }}
+<h2>Werkbon: #{{ workOrder.id }} - {{ workOrder.titel }}</h2>
+<hr>
+    <p>Aangemaakt op: {{ workOrder.time|date('d-m-Y') }}</p>
+
+    <p>Status: {{ workOrder.status }}</p>
+
+    <p>Omschrijving: {{ workOrder.comment }}</p>
+
+<p>Gewerkte uren: {{ render(controller('App\\Controller\\HoursController::getTotalHours', { 'id': workOrder.id } )) }}</p>
+
+    <p>Getekend door: {{ workOrder.signedBy }}</p><br>
+    <img src="{{ absolute_url('http://localhost/Alphabuddy/data/signatures/'~  workOrder.id ~'.png') }}" alt="">
+</body>
+</html>

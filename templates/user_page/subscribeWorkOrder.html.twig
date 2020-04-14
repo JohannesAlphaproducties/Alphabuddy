@@ -1,0 +1,12 @@
+Werkbon {{ workOrder.id }} {{ workOrder.company.name }}{% for mechanic in workOrder.mechanic %}
+        {{ mechanic.name }}
+    {% endfor %}<br>
+
+titel: {{ workOrder.titel }}<br>
+getekend door: {{ workOrder.signedBy }}<br>
+aantal uren: {{ render(controller('App\\Controller\\HoursController::getTotalHours', { 'id': workOrder.id } )) }}<br>
+status: {{ workOrder.status }}<br>
+prioritijd: {{ workOrder.priority }}<br>
+commentaar: {{ workOrder.comment }}<br>
+tijd: {{ workOrder.time ? workOrder.time|date('Y-m-d') : '' }}<br>
+

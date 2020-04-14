@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg mb-2 mt-3">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">{{ company.name }}</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>TeamLeader Id</th>
+                                        <th>Naam</th>
+                                        <th>Telefoon</th>
+                                        <th>Website</th>
+                                        <th>Adres</th>
+                                        <th>Postcode</th>
+                                        <th>Locatie</th>
+                                        <th>Email</th>
+                                        <th>Fax</th>
+                                        <th>Type</th>
+                                        <th>Werknemers</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ company.tlId }}</td>
+                                        <td>{{ company.name }}</td>
+                                        <td>{{ company.phone }}</td>
+                                        <td>{{ company.website }}</td>
+                                        <td>{{ company.billingAddress }}</td>
+                                        <td>{{ company.billingZip }}</td>
+                                        <td>{{ company.billingTown }}</td>
+                                        <td>{{ company.email }}</td>
+                                        <td>{{ company.fax }}</td>
+                                        <td>{{ company.type }}</td>
+                                        <td>{{ company.employees }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="{{ path('delete_company', {'id': company.id }) }}" class="dropdown-item">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg mb-2">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h3 class="card-title">Werkbonnen ({{ workOrders|length }})</h3>
+                        <div class="card-options">
+                            <a href="{{ path('work_orders_new') }}" class="font-weight-bold text-success">Toevoegen</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Titel</th>
+                                        <th>Status</th>
+                                        <th>Tijd</th>
+                                        <th>Opmerkingen</th>
+                                        <th>Prioritijd</th>
+                                        <th>Monteur</th>
+                                        <th>Uren Gewerkt</th>
+                                        <th>Acties</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for workOrder in workOrders %}
+                                        <tr>
+                                            <td>
+                                                <a href="{{ path('work_orders_show', {'id': workOrder.id }) }}">{{ workOrder.titel }}</a>
+                                            </td>
+                                            <td>{{ workOrder.status }}</td>
+                                            <td>{{ workOrder.time ? workOrder.time|date('Y-m-d H:i:s') : '' }}</td>
+                                            <td>{{ workOrder.comment|length > 15 ? workOrder.comment|slice(0,15)  ~ '...' : workOrder.comment }}</td>
+                                            <td>{{ workOrder.priority }}</td>
+                                            <td>
+                                                {% for mechanic in workOrder.Mechanic %}
+                                                    {{ mechanic }}
+                                                {% endfor %}
+                                            </td>
+                                            <td>{{ render(controller('App\\Controller\\HoursController::getTotalHours', { 'id': workOrder.id } )) }}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a href="{{ path('work_orders_edit', {'id': workOrder.id }) }}" class="dropdown-item">Edit</a>
+                                                        <a href="{{ path('work_orders_delete', {'id': workOrder.id }) }}" class="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="card-title">Tickets ({{ tickets|length }})</h6>
+                        <div class="card-options">
+                            <a href="{{ path('ticket_new') }}" class="font-weight-bold text-success">Toevoegen</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Prioritijd</th>
+                                        <th>Bericht</th>
+                                        <th>Status</th>
+                                        <th>Aangemaakt door</th>
+                                        <th>Verantwoordelijk</th>
+                                        <th>Aangemaakt op</th>
+                                        <th>Actie's</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+{#                                    {{ dump(tickets) }}#}
+                                    {% for ticket in tickets %}
+                                        <tr>
+                                            <td>{{ ticket.priority }}</td>
+                                            <td>{{ ticket.description }}</td>
+                                            <td>{{ ticket.status }}</td>
+                                            <td>{{ ticket.getUser }}</td>
+                                            <td>{% for responsible in ticket.responsible %}
+                                                    {{ responsible.name }}
+                                                {% endfor %}
+                                            </td>
+                                            <td>{{ ticket.onPrePersist ? ticket.onPrePersist|date('Y-m-d H:i:s') : '' }}</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
+                                                    <div class="dropdown-menu">
+                                                        {% if ticket.status == 'klaar' %}
+                                                        {% else %}
+                                                            <a href="{{ path('ticket_edit', {'id': ticket.id }) }}" class="dropdown-item">Edit</a>
+                                                        {% endif %}
+                                                        <a href="{{ path('ticket_show', {'id': ticket.id}) }}" class="dropdown-item">Show</a>
+                                                        <a href="{{ path('ticket_delete', {'id': ticket.id }) }}" class="dropdown-item">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h3 class="m-0">Mijn uren </h3>
+                        <div class="card-options">
+                            <h3 class="text-muted m-0">{{ "monday this week"|date("m/d/Y") }} - {{ "saturday this week"|date("m/d/Y") }}</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Datum</th>
+                                    <th>Aantal uren</th>
+                                    <th>Werkbon</th>
+                                    <th>Beschrijving</th>
+                                    <th>Actie</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for hour in hours %}
+                                    {% if hour.date > date('monday this week')%}
+                                        <tr>
+                                            <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
+                                            <td>{{ hour.hours }}</td>
+                                            <td><a href="{{ path('work_orders_show', {'id': hour.workOrder.id }) }}">{{ hour.workOrder }}</a></td>
+                                            <td>{{ hour.description }}</td>
+                                            <td>{{ include('hours/_delete_form.html.twig') }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% else %}
+                                    <p>Geen Uren geregistreerd</p>
+                                {% endfor %}
+                                <tr>
+                                    <td><p class="font-weight-bold">Totaal {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } )) }}</p></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Overige Optie's</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Optie</th>
+                                    <th>Aan/uit</th>
+                                    <th>Opslaan</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <form action="{{ path('subscribe_workOrder') }}" method="post">
+                                    <tr>
+                                        <td>
+                                            <div class="form-label">Copie ontvangen van afgehandelde werkbonnen</div>
+                                        </td>
+                                        <td>
+                                            <label class="custom-switch">
+                                                <input type="checkbox" name="workOrderSwitch" class="custom-switch-input" {% if user.subsribedWorkOrder == 1 %}checked{% endif %}>
+                                                <span class="custom-switch-indicator"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                                <form action="{{ path('subscribe_ticket') }}" method="post">
+                                    <tr>
+                                        <td>
+                                            <div class="form-label">Copie ontvangen van afgehandelde tickets</div>
+                                        </td>
+                                        <td>
+                                            <label class="custom-switch">
+                                                <input type="checkbox" name="workOrderSwitch" class="custom-switch-input" {% if user.subscribedTicket == 1 %}checked{% endif %}>
+                                                <span class="custom-switch-indicator"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                                <form action="{{ path('subscribe_responsible_ticket') }}" method="post">
+                                    <tr>
+                                        <td>
+                                            <div class="form-label">Mail ontvangen wanneer je verantwoordelijk wordt gesteld voor een ticket</div>
+                                        </td>
+                                        <td>
+                                            <label class="custom-switch">
+                                                <input type="checkbox" name="workOrderSwitch" class="custom-switch-input" {% if user.subscribedResponsibleTicket == 1 %}checked{% endif %}>
+                                                <span class="custom-switch-indicator"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                                <form action="{{ path('save_contract') }}" method="post">
+                                    <tr>
+                                        <td>
+                                            <div class="form-label">Uren contract invullen</div>
+                                        </td>
+                                        <td>
+                                            <label for="contract">
+                                                <input type="text" name="contract" id="contract" value="{{ user.contract }}" class="form-control">
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Bugs</div>
+                </div>
+                <div class="card-body">
+                    <form action="{{ path('bug_new') }}">
+                        <label for="bug">Vul hier je feedback in</label>
+                        <textarea name="bug" id="bug" class="form-control"></textarea>
+                        <button type="submit" class="btn btn-sm btn-green float-right mt-3">Versturen</button>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        {% for bug in bugs %}
+                        <ul class="list-unstyled">
+                            <li class="media">
+                                {{ bug.date ? bug.date|date('Y-m-d') : '' }}
+                                <div class="media-body ml-3">
+                                    {{ bug.message }}
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                         <a href="{{ path('bug_delete', {'id': bug.id}) }}" class="btn btn-red btn-sm float-right">Delete</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

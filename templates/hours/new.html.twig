@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Hours{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card shadow mb-4 mt-3">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Uren aanmaken</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ include('hours/_form.html.twig', {'id' : id }) }}
+                                <a href="{{ path('hours_index') }}" class="dropdown-item">Terug</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Edit Company</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ include('company/_form.html.twig') }}
+                                <a href="{{ path('ticket_index') }}" class="btn btn-primary float-right dropdown-item text-primary">Terug</a>
+                                <a href="{{ path('delete_company', {'id': company.id }) }}">Delete</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

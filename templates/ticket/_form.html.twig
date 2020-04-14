@@ -1,0 +1,19 @@
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+{% if ticket.company %}
+    {% if ticket.company.email is empty %}
+        <label for="email">Email bedrijf (Er is geen email gevonden bij dit bedrijf)</label>
+        <input type="text" name="companyEmail" placeholder="Email bedrijf" required class="form-control" id="email">
+        {% else %}
+            <label for="email" class="mt-3">Email</label>
+            <input type="text" name="companyEmail" value="{{ ticket.company.email }}" required class="form-control" id="email">
+    {% endif %}
+{% endif %}
+    <button class="dropdown-item text-success mt-3">{{ button_label|default('Opslaan') }}</button>
+{{ form_end(form) }}
+<script>
+    $(document).ready(function() {
+        $('.js-select').select2();
+    });
+</script>

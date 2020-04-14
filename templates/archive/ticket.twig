@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Archief tickets{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Archief tickets</div>
+            <div class="card-options">
+                <a href="{{ path('empty_ticket_archive') }}" class="btn btn-red btn-sm">Archief legen</a>
+            </div>
+        </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prioritijd</th>
+                    <th>Descriptie</th>
+                    <th>Status</th>
+                    <th>Aangemaakt door</th>
+                    <th>Bedrijf</th>
+                    <th>Verantwoordelijk</th>
+                    <th>Acties's</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.id }}</td>
+                        <td>{{ ticket.priority }}</td>
+                        <td><a href="{{ path('ticket_show', {'id': ticket.id}) }}">{{ ticket.description }}</a></td>
+                        {% if ticket.status == 'klaar' %}
+                            <td class="text-success"> {{ ticket.status }}</td>
+                        {% else %}
+                            <td>{{ ticket.status }}</td>
+                        {% endif %}
+                        <td>{{ ticket.user }}</td>
+                        <td>{{ ticket.company }}</td>
+                        <td>{% for responsible in ticket.responsible %}
+                                {{ responsible.name }}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{include('ticket/_delete_form.html.twig')}}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>Geen resultaten</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        {{ knp_pagination_render(tickets) }}
+    </div>
+    </div>
+
+{% endblock %}

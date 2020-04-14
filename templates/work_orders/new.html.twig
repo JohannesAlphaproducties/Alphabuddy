@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New WorkOrders{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Werkbon </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ include('work_orders/_form.html.twig') }}
+                                <a href="{{ path('work_orders_index') }}" class="dropdown-item">Terug</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

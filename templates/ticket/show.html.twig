@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ticket{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-sm">
+            <div class="card shadow">
+                <div class="card-header font-weight-bold">
+                    Ticket voor {{ ticket.company }}
+                </div>
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Prioritijd</th>
+                        <th>Bericht</th>
+                        <th>Status</th>
+                        <th>Gemaakt door</th>
+                        <th>Verantwoordelijk</th>
+                        <th>Bedrijf</th>
+                        <th>Aangemaakt</th>
+                        <th>Update</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ ticket.id }}</td>
+                        <td>{{ ticket.priority }}</td>
+                        <td>
+                            <div id="editor1" contenteditable="true">{{ ticket.description|striptags }}</div>
+                        </td>
+                        <td>{{ ticket.status }}</td>
+                        <td>{{ ticket.getUser.name }}</td>
+                        <td>{% for responsible in ticket.responsible %}
+                                {{ responsible.name }}
+                            {% endfor %}
+                        </td>
+                        <td><a href="{{ path('showOne_company', {'id': ticket.company.id}) }}">{{ ticket.company }}</a></td>
+                        <td>{{ ticket.onPrePersist ? ticket.onPrePersist|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>{{ ticket.onPreUpdate ? ticket.onPreUpdate|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <div class="btn-group">
+                        <button class="btn btn-light btn-sm dropdown-toggle border" type="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Actie's</button>
+                        <div class="dropdown-menu">
+                            <a href="{{ path('ticket_index') }}" class="dropdown-item">Terug naar overzicht</a>
+                            {% if ticket.status == 'klaar' %}
+                                {% else %}
+                                    <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="dropdown-item">edit</a>
+                                    <a href="{{ path('transform', {'id': ticket.id}) }}" class="dropdown-item">Omzetten naar werkbon</a>
+                            {% endif %}
+                            {{ include('ticket/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.inline('editor1', {
+            on: {
+                blur: function (event) {
+                    if (event.editor.checkDirty())
+                        var data = {description: event.editor.getData()};
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ path('ticket_edit', {'id': ticket.id}) }}',
+                        data: data,
+                        success: function (response) {
+                            content.html(response);
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+
+
+
+{% endblock %}

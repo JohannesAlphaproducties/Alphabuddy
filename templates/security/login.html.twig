@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/tabler.min.css') }}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/style.css') }}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <script src="{{ asset('js/vendors/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/vendors/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/tabler.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+</head>
+<body>
+<div class="page">
+    <div class="page-single">
+        <div class="container">
+            <div class="row">
+                <div class="col col-login mx-auto">
+                    <form method="post" class="card">
+                        <div class="card-body p-6">
+                            <div class="card-title">Alphabuddy</div>
+                            <div class="form-group">
+                                <label class="form-label sr-only">Email</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                                       placeholder="Email" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label sr-only">Wachtwoord</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            </div>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <div class="form-footer">
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+

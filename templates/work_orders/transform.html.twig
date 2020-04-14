@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-lg">
+            <div class="card">
+                <div class="list-group">
+                    <div class="card-header">
+                        <div class="card-title">Ticket gegevens</div>
+                    </div>
+                    <div class="list-group-item">Prioritijd <input type="text" class="form-control" value="{{ ticket.priority }}"></div>
+                    <div class="list-group-item">Beschrijving <input type="text" class="form-control" value="{{ ticket.description }}"></div>
+                    <div class="list-group-item">Status <input type="text" class="form-control" value="{{ ticket.status }}"></div>
+                    <div class="list-group-item">Aangemaakt door <input type="text" class="form-control" value="{{ ticket.user.name }}"></div>
+                    <div class="list-group-item">Verantwoordelijk <input type="text" class="form-control" value="{% for responsible in ticket.responsible %}{{ responsible.name }}{% endfor %}"></div>
+                    <div class="list-group-item">Bedrijf <input type="text" class="form-control" value="{{ ticket.company.name }}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Ticket omzetten naar werkbon
+                    </div>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    {{ form_row(form.titel, {'value': ticket.description}) }}
+                    {{ form_row(form.comment, {'value': ticket.description}) }}
+                    {{ form_row(form.priority, {'value': ticket.priority}) }}
+                    {{ form_row(form.mechanic, {'value': ticket.responsible}) }}
+                    {{ form_row(form.company, {'value': ticket.company}) }}
+                    {{ form_widget(form) }}
+                    <p class="text-muted text-right">Let op! De bestaande Ticket wordt verwijderd!</p><button type="submit" class="btn btn-sm btn-green float-right mt-3">Omzetten</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('.js-select').select2();
+        });
+    </script>
+{% endblock %}

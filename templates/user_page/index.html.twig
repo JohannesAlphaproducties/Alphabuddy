@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Page{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Gebruikers overzicht ({{ users|length }})</h6>
+                    </div>
+                    <div class="card-body">
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <a href="{{ path('app_register') }}" class="btn btn-success btn-sm">Nieuwe gebruiker</a>
+                        {% endif %}
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Voornaam</th>
+                                    <th>Achternaam</th>
+                                    <th>Rechten</th>
+                                    <td>Actie</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.name }}</td>
+                                        <td>{{ user.lastName }}</td>
+                                        <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                        <td>
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a href="{{ path('app_userpage_deleteuser', {'id': user.id }) }}" class="btn btn-danger btn-sm">Delete</a>
+                                        {% else %}
+                                            <a class="btn btn-danger disabled">Delete</a>
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for user in users %}
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                         {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': user.id } ))  >  user.contract  %}
+                        <div class="card-title text-red">
+                            {{ user.name }}
+                            ({{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': user.id } )) }} / {{ user.contract }})
+                        </div>
+                            {% else %}
+                                <div class="card-title">
+                                    {{ user.name }}
+                                    ({{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': user.id } )) }} / {{ user.contract }})
+                                </div>
+                            {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Uren</th>
+                                    <th>Werkbon</th>
+                                    <th>Datum</th>
+                                    <th>Actie</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for hour in user.hours %}
+                                    {% if hour.date > date('monday this week') %}
+                                        <tr>
+                                            <td>{{ hour.hours }}</td>
+                                            <td><a href="{{ path('work_orders_show', {'id': hour.workOrder.id }) }}">{{ hour.workOrder.titel }}</a></td>
+                                            <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
+                                            <td>{{ include('hours/_delete_form.html.twig') }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+.course-header-image{
+    border-bottom-left-radius: 100% 25%;
+    border-bottom-right-radius: 100% 25%;
+    border-bottom: none;
+    height: 150px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.0;
+    }
+}
+
+.blink {
+    animation: blink 1s step-start 0s infinite;
+    -webkit-animation: blink 1s step-start 0s infinite;
+}

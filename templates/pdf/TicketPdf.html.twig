@@ -1,0 +1,21 @@
+<html>
+<style>
+    body {
+        font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+</style>
+<body>
+Company: {{ ticket.company.name }}
+<h2>Ticket: #{{ ticket.id }} - {{ ticket.status }}</h2>
+<hr>
+<p>Afgemaakt op: {{ ticket.onPreUpdate|date('d-m-Y') }}</p>
+
+<p>Status: {{ ticket.status }}</p>
+
+<p>Omschrijving: {{ ticket.description }}</p>
+
+<p>Verantwoordelijk: {% for responsible in ticket.responsible %}
+        {{ responsible.name }}
+    {% endfor %}</p>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WorkOrders{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header font-weight-bold">
+                        Werkbon {{ work_order.titel }}
+                    </div>
+                    <table class="card-table table table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Bedrijf</th>
+                            <th>Titel</th>
+                            <th>Status</th>
+                            <th>Tijd</th>
+                            <th>Prioritijd</th>
+                            <th>Uren</th>
+                            <th>Bericht</th>
+                            <th>Monteur(s)</th>
+                            <th>Afgetekend</th>
+                        </tr>
+                        <tr>
+                            <td>{{ work_order.id }}</td>
+                            <td><a href="{{ path('showOne_company', {'id': work_order.company.id}) }}">{{ work_order.company.name }}</a></td>
+                            <td>{{ work_order.titel }}</td>
+                            <td>{{ work_order.status }}</td>
+                            <td>{{ work_order.time ? work_order.time|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>{{ work_order.priority }}</td>
+                            <td>{{ render(controller('App\\Controller\\HoursController::getTotalHours', { 'id': work_order.id } )) }}</td>
+                            <td>{{ work_order.comment }}</td>
+                            <td>{% for mechanic in work_order.mechanic %}
+                                    {{ mechanic.name }}
+                                {% endfor %}</td>
+                            <td>{% if work_order.signedBy is not null %}
+                                    <i class="fa fa-check"></i> {{ work_order.signedBy }}
+                                {% else %}
+                                    <i class="fas fa-minus"></i>
+                                {% endif %}</td>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div class="card-footer">
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-sm dropdown-toggle border" type="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Actie's</button>
+                            <div class="dropdown-menu">
+                                <a href="{{ path('work_orders_index') }}" class="dropdown-item">Terug naar overzicht</a>
+                                <a href="{{ path('work_orders_edit', {'id': work_order.id}) }}" class="dropdown-item">edit</a>
+                                {{ include('work_orders/_delete_form.html.twig') }}
+                                <a href="{{ path('download_pdf', {'id': work_order.id}) }}" class="dropdown-item">Download pdf</a>
+                                <a href="{{ path('sign_workOrder', {'id': work_order.id }) }}" class="dropdown-item">Aftekenen</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card shadow">
+                    <div class="card-header font-weight-bold">
+                        <h3 class="card-title">Uren</h3>
+                        <div class="card-options">
+                            <a href="{{ path('hours_new', {'id' : work_order.id }) }}" class="text-success">Toevoegen</a>
+                        </div>
+                    </div>
+                    {% if hours is empty %}
+                        <div class="card-body">
+                            Geen Uren geregistreerd
+                        </div>
+                    {% else %}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th>Uren gewerkt</th>
+                                            <th>Monteur</th>
+                                            <th>Descriptie</th>
+                                            <th>Datum</th>
+                                            <th>Actie</th>
+                                        </tr>
+                                        </thead>
+                                        {% for hour in hours %}
+                                            <tr>
+                                                <td>{{ hour.hours }}</td>
+                                                <td>{{ hour.user }}</td>
+                                                <td>{{ hour.description }}</td>
+                                                <td>{{ hour.date|date('Y-m-d')  }}</td>
+                                                <td>
+                                                {% if app.user ==  hour.user %}
+                                                        <a href="{{ path('hours_delete', {'id': hour.id }) }}" class="btn-red btn-sm">Delete</a>
+                                                    <a href="{{ path('hours_edit', {'id': hour.id}) }}" class="btn-primary btn-sm">Edit</a>
+                                                {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

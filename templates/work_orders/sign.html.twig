@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="col-sm">
+            <div class="row mt-3">
+                <div class="card h-100">
+                    <div class="card-header font-weight-bold">
+                        Aftekenen
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ path('save_sign', {'id' : id }) }}" method="post" id="signForm">
+                            <input type="text" placeholder="Getekend door:" class="form-control mb-4" name="signedBy">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="check" value="option1" id="check" checked>
+                                <span class="custom-control-label">Werkbon versturen naar klant</span>
+                            </label>
+                            {% if companyEmail is empty %}
+                                <input type="text" class="form-control mb-3" placeholder="Email Bedrijf" name="emailCompany">
+                                {% else %}
+                                    <input type="text" class="form-control mb-3" value="{{ companyEmail }}" name="emailCompany">
+                            {% endif %}
+                            <div id="signature-pad" class="signature-pad">
+                                <div class="signature-pad--body">
+                                    <canvas class="border"></canvas>
+                                </div>
+                                <div class="signature-pad--footer">
+                                    <div class="signature-pad--actions">
+                                        <div>
+                                            <button type="submit" class="btn btn-green save" data-action="save">Save</button>
+                                            <button type="button" class="btn btn-red clear btn-sm" data-action="clear">Wissen</button>
+                                            <button type="button" class="btn btn-yellow btn-sm" data-action="undo">Stap terug</button>
+                                        </div>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="hidden_field" value="" id="signInput">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('js/signPad.js') }}"></script>
+{% endblock %}

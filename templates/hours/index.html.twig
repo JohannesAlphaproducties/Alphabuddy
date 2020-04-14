@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hours index{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card h-100">
+                    <div class="card-header font-weight-bold">
+                        Uren Registratie
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Klant</th>
+                                    <th>Werkbon</th>
+                                    <th>Descriptie</th>
+                                    <th>Uren</th>
+                                    <th>Monteur</th>
+                                    <th>Datum</th>
+                                    <th>Actie's</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for hour in hours %}
+                                    <tr>
+                                        <td>{{ hour.id }}</td>
+                                        <td>{{ hour.workorder.company }}</td>
+                                        <td><a href="{{ path('work_orders_show', {'id': hour.workorder.id }) }}">{{ hour.workorder.titel }}</a></td>
+                                        <td>{{ hour.description }}</td>
+                                        <td>{{ hour.hours }}</td>
+                                        <td>{{ hour.user }}</td>
+                                        <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : '' }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="{{ path('hours_show', {'id': hour.id}) }}" class="dropdown-item">show</a>
+                                                    <a href="{{ path('hours_edit', {'id': hour.id}) }}" class="dropdown-item">edit</a>
+                                                    {{include('hours/_delete_form.html.twig')}}
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Geen uren gevonden</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        {{ knp_pagination_render(hours) }}
+                        <a href="{{ path('hours_new') }}" class="float-right text-success font-weight-bold">Nieuw</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

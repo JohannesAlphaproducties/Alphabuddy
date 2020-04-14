@@ -1,0 +1,15 @@
+Company: {{ ticket.company.name }}<br>
+Ticket: #{{ ticket.id }} - {{ ticket.status }}<br>
+
+Afgemaakt op: {{ ticket.onPreUpdate|date('d-m-Y') }}<br>
+
+Status: {{ ticket.status }}<br>
+
+Omschrijving: {{ ticket.description }}<br>
+
+Verantwoordelijk:
+{% for responsible in ticket.responsible %}
+        {{ responsible.name }}
+ {% endfor %}<br>
+
+Ticket: localhost{{ path('ticket_show', {'id' : ticket.id}) }}

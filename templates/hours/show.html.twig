@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hours{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card shadow">
+                    <div class="card-header font-weight-bold">
+                        Uren registratie van {{ hour.workorder }}
+                    </div>
+                        <table class="table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Description</th>
+                                <th>Hours</th>
+                                <th>Date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ hour.id }}</td>
+                                <td>{{ hour.description }}</td>
+                                <td>{{ hour.hours }}</td>
+                                <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : '' }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    <div class="card-footer">
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-sm dropdown-toggle border" type="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Actie's</button>
+                            <div class="dropdown-menu">
+                                <a href="{{ path('hours_index') }}" class="dropdown-item">Terug naar overzicht</a>
+                                <a href="{{ path('hours_edit', {'id': hour.id}) }}" class="dropdown-item">edit</a>
+                                {{ include('hours/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

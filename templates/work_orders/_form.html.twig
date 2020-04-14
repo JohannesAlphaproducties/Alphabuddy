@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+{% if statusEdit is defined %}
+    {{ form_row(form.status, {'value' : statusEdit}) }}
+{% endif %}
+    {{ form_widget(form) }}
+    <button class="dropdown-item text-success mt-3">{{ button_label|default('Opslaan') }}</button>
+{{ form_end(form) }}
+<script>
+    $(document).ready(function() {
+        $('.js-select').select2();
+    });
+</script>

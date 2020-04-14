@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WorkOrders index{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-sm">
+                <div class="card h-100">
+                    <div class="card-header font-weight-bold">
+                        Werkbonnen
+                        <input type="text" id="search" class="form-control col-lg-3 ml-auto" placeholder="Zoeken">
+                    </div>
+                    <div class="ajaxContent">
+                        {{ include('work_orders/index_results.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                paging: false,
+                "info" : false,
+                "searching": false,
+            });
+        } );
+
+        $(document).ready(function(){
+            $("#search").on('keyup', function(e) { // everytime keyup event
+                e.preventDefault();
+                var input = $(this).val();// We take the input value
+                $.ajax({
+                    type: "POST",
+                    data: {
+                        query: input
+                    },
+                    url: "{{ path('workOrder_search') }}",
+                    dataType: "html",
+                    cache: false,
+                    success: function (response) {
+                        $('.ajaxContent').empty();
+                        $('.ajaxContent').append(response);
+
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+
+            });
+        });
+
+    </script>
+{% endblock %}

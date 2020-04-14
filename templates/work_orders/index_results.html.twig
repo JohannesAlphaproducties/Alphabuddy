@@ -1,0 +1,59 @@
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table" id="datatable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Bedrijf</th>
+                <th>Titel</th>
+                <th>Status</th>
+                <th>Datum</th>
+                <th>Prioritijd</th>
+                <th>Afgetekend</th>
+                <th>acties's</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for work_order in work_orders %}
+                <tr>
+                    <td>{{ work_order.id }}</td>
+                    <td><a href="{{ path('showOne_company', {'id': work_order.company.id}) }}">{{ work_order.company }}</a></td>
+                    <td><a href="{{ path('work_orders_show', {'id': work_order.id }) }}">{{ work_order.titel }}</a></td>
+                    <td>{{ work_order.status }}</td>
+                    <td>{{ work_order.time ? work_order.time|date('Y-m-d') : '' }}</td>
+                    <td>{{ work_order.priority }}</td>
+                    <td>
+                        {% if work_order.signedBy is not null %}
+                            <i class="fa fa-check"></i>
+                        {% else %}
+                            <i class="fas fa-minus"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="{{ path('work_orders_show', {'id': work_order.id}) }}" class="dropdown-item">show</a>
+                                <a href="{{ path('work_orders_edit', {'id': work_order.id}) }}" class="dropdown-item">edit</a>
+                                {{ include('work_orders/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>Geen resultaten</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card-footer">
+    {{ knp_pagination_render(work_orders) }}
+    <a href="{{ path('work_orders_new') }}" class="float-right text-success font-weight-bold">Nieuw</a>
+</div>
+
+

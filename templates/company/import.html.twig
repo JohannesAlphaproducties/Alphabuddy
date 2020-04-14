@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompanyController!{% endblock %}
+
+{% block body %}
+    <div class="card col-lg h-100">
+        <div class="card-header">Bedrijven</div>
+        <button id="ajax" type="button" class="btn btn-primary ajax" title="Ajax Request">
+            <i class="fa fa-spinner"></i> Import
+        </button>
+        <div class="card-body">
+            <div class="ajax-content"></div>
+        </div>
+    </div>
+
+{% block javascripts %}
+    <script type="text/javascript">
+
+        $('#ajax').click(function () {
+            $('.ajax-content').html('');
+            getAjax(0);
+        });
+
+        var cur = 0;
+        function getAjax(cur) {
+            $.ajax({
+                url: 'import/'+cur, success: function (result) {
+
+                    if(result == 0 && cur < 7)
+                    {
+                        getAjax(cur+1)
+                    }else{
+                        $('.ajax-content').html('<hr>Importeren afgerond. Aantal geimporteerde bedrijven : ' + result)
+                    }
+                }
+            })
+        }
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#    <!-- Earnings (Monthly) Card Example -->#}
+{#    <div class="col-xl-4 col-md-6 mb-4">#}
+{#        <div class="card border-left-primary shadow h-100 py-2">#}
+{#            <div class="card-body">#}
+{#                <div class="row no-gutters align-items-center">#}
+{#                    {{ form_start(form) }}#}
+{#                    {{ form_end(form) }}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+{#    <!-- Earnings (Monthly) Card Example -->#}
+{#    <div class="col-xl-4 col-md-6 mb-4">#}
+{#        <div class="card border-left-success shadow h-100 py-2">#}
+{#            <div class="card-body">#}
+{#                <div class="row no-gutters align-items-center">#}
+{#                    <div class="col mr-2">#}
+{#                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">bedrijven</div>#}
+{#                        <div class="card shadow mb-4">#}
+{#                            <div class="card-header py-3">#}
+{#                                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+{#                            </div>#}
+{#                            <div class="card-body">#}
+{#                                <div class="table-responsive">#}
+{#                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">#}
+{#                                        <thead>#}
+{#                                        <tr>#}
+{#                                            <th>Name</th>#}
+{#                                            <th>Position</th>#}
+{#                                            <th>Office</th>#}
+{#                                            <th>Age</th>#}
+{#                                            <th>Start date</th>#}
+{#                                            <th>Salary</th>#}
+{#                                        </tr>#}
+{#                                        </thead>#}
+{#                                        <tbody>#}
+{#                                        <tr>#}
+{#                                            <td>Donna Snider</td>#}
+{#                                            <td>Customer Support</td>#}
+{#                                            <td>New York</td>#}
+{#                                            <td>27</td>#}
+{#                                            <td>2011/01/25</td>#}
+{#                                            <td>$112,000</td>#}
+{#                                        </tr>#}
+{#                                        </tbody>#}
+{#                                    </table>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+
+
+
+{% endblock %}

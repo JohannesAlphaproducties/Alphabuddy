@@ -1,0 +1,50 @@
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table" id="datatable">
+            <thead>
+            <tr>
+                <th>TlId</th>
+                <th>Naam</th>
+                <th>Adres</th>
+                <th>Postcode</th>
+                <th>Locatie</th>
+                <th>Email</th>
+                <th>Actie's</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for company in companys %}
+                <tr>
+                    <td><a>{{ company.tlId }}</a></td>
+                    <td><a href="{{ path('showOne_company', {'id':  company.id } ) }}">{{ company.name }}</a></td>
+                    <td>{{ company.billingAddress }}</td>
+                    <td>{{ company.billingZip }}</td>
+                    <td>{{ company.billingTown }}</td>
+                    <td>{{ company.email }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="{{ path('showOne_company', {'id': company.id}) }}" class="dropdown-item">show</a>
+                                <a href="{{ path('delete_company', {'id': company.id }) }}" class="dropdown-item">Delete</a>
+                                <a href="https://app.teamleader.eu/company_detail.php?id="{{ company.tlId }} class="dropdown-item">TeamLeader.eu/company</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>Geen resultaten</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card-footer">
+        {{ knp_pagination_render(companys) }}
+</div>
+
+

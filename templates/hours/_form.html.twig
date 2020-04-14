@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+{{ form_row(form.workorder, { 'value' : id }) }}
+    {{ form_widget(form) }}
+    <button class="dropdown-item text-success mt-3">{{ button_label|default('Opslaan') }}</button>
+{{ form_end(form) }}
+<script>
+    $(document).ready(function() {
+        $('.js-select').select2();
+    });
+</script>

@@ -1,0 +1,193 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card shadow h-100 py-2">
+                            <div class="card-status bg-blue"></div>
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <a href="{{ path('hours_index') }}" class="text-xs font-weight-bold text-primary text-uppercase mb-1">Totaal persoonlijke uren</a>
+                                            {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } ))  >  app.user.contract  %}
+                                        <div class="h4 mb-0 font-weight-bold text-red">
+                                            {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } )) }} / {{ app.user.contract }}
+                                        </div>
+                                            {% else %}
+                                                <div class="h4 mb-0 font-weight-bold">
+                                                    {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } )) }} / {{ app.user.contract }}
+                                                </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card shadow h-100 py-2">
+                            <div class="card-status bg-purple"></div>
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <a href="{{ path('work_orders_index') }}" class="text-xs font-weight-bold text-uppercase mb-1 text-purple">Totaal werkbonnen</a>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div class="h4 mb-0 mr-3 font-weight-bold text-gray-800">{{ workOrders|length }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card shadow h-100 py-2">
+                            <div class="card-status bg-yellow"></div>
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <a href="{{ path('ticket_index') }}" class="text-xs font-weight-bold text-warning text-uppercase mb-1">Totaal tickets</a>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">{{ tickets|length }}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-ticket-alt fa-rotate-90 fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Row -->
+                <div class="row">
+
+                    <!-- Content Column -->
+                    <div class="col-lg mb-4">
+
+                        <!-- Tickets -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h6 class="card-title">Verwantwoordelijke tickets</h6>
+                            </div>
+                                {% if app.user %}
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Bedrijf</th>
+                                                <th>Status</th>
+                                                <th>Descriptie</th>
+                                                <th>Prioritijd</th>
+                                                <th>Acties</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for ticket in tickets %}
+                                                {% for responsible in ticket.responsible %}
+                                                    {% if responsible == app.user %}
+                                                        <tr>
+                                                            <td>
+                                                                <a href={{ path('ticket_show', {'id': ticket.id}) }}>{{ ticket.company }}</a>
+                                                            </td>
+                                                            <td>{{ ticket.status }}</td>
+                                                            <td>{{ ticket.description|length > 15 ? ticket.description|slice(0, 15) ~ '...' : ticket.description }}</td>
+                                                            <td>{{ ticket.priority }}</td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
+                                                                    <div class="dropdown-menu">
+                                                                        <a href="{{ path('ticket_show', {'id': ticket.id}) }}" class="dropdown-item">Show</a>
+                                                                        <a href="{{ path('ticket_edit', {'id': ticket.id}) }}" class="dropdown-item">Edit</a>
+                                                                        {{ include('ticket/_delete_form.html.twig')}}
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {% else %}
+                                    Er zijn geen tickets gevonden
+                                {% endif %}
+                            <div class="card-footer">
+                                <a href="{{ path('ticket_new') }}" class="text-success font-weight-bold float-right">Nieuw</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg mb-4">
+
+                        <!-- Werkbonnen -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="card-title">Monteur op Werkbonnen</h6>
+                            </div>
+                                {% if app.user %}
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Bedrijf</th>
+                                                <th>Status</th>
+                                                <th>Titel</th>
+                                                <th>Prioritijd</th>
+                                                <th>Acties</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for workOrder in workOrders %}
+                                                {% for mechanic in workOrder.mechanic %}
+                                                    {% if mechanic == app.user %}
+                                                        <tr>
+                                                            <td>
+                                                                <a href={{ path('work_orders_show', {'id': workOrder.id}) }}>{{ workOrder.company }}</a>
+                                                            </td>
+                                                            <td>{{ workOrder.status }}</td>
+                                                            <td>{{ workOrder.titel|length > 15 ? workOrder.titel|slice(0, 15) ~ '...': workOrder.titel}}</td>
+                                                            <td>{{ workOrder.priority }}</td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
+                                                                    <div class="dropdown-menu">
+                                                                        <a href="{{ path('work_orders_edit', {'id': workOrder.id}) }}" class="dropdown-item">Edit</a>
+                                                                        <a href="{{ path('work_orders_delete', {'id': workOrder.id }) }}" class="dropdown-item">Delete</a>
+                                                                        <a href="{{ path('work_orders_show', {'id': workOrder.id}) }}" class="dropdown-item">Show</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                {% endif %}
+                            <div class="card-footer">
+                                <a href="{{ path('work_orders_new') }}" class="font-weight-bold text-success text-success float-right">Nieuw</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- /.container-fluid -->
+
+        </div>
+    </div>
+
+    </div>
+{% endblock %}

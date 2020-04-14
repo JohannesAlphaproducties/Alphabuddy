@@ -1,0 +1,86 @@
+<div class="header py-4">
+    <div class="container">
+        <div class="d-flex">
+            <a class="header-brand" href="{{ path('home') }}">
+                Alphabuddy
+            </a>
+            <div class="d-flex order-lg-2 ml-auto">
+                {% if is_granted('ROLE_USER') %}
+                    <div class="dropdown">
+                        <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                            <span class="avatar">{{ app.user.email|slice(0, 1)|upper }}</span>
+                            <span class="ml-2 d-none d-lg-block">
+                          <span class="text-default">{{ app.user.name }} {{ app.user.lastName }}</span>
+                          <small class="text-muted d-block mt-1">{{ app.user.email }}</small>
+                        </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                            <a href="{{ path('profile') }}" class="dropdown-item">
+                                <i class="dropdown-icon fas fa-id-badge"></i> Profiel
+                            </a>
+                            <a class="dropdown-item" href="{{ path('app_logout') }}">
+                                <i class="dropdown-icon fa fa-sign-out-alt"></i> Uitloggen
+                            </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('user_index') }}" class="dropdown-item">
+                                    <i class="dropdown-icon fa fa-users"></i> Gebruikers</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse"
+               data-target="#headerMenuCollapse">
+                <span class="header-toggler-icon"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="header collapse d-lg-flex p-0 mb-3" id="headerMenuCollapse">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg order-lg-first">
+                <ul class="nav nav-tabs border-0">
+                    <li class="nav-item">
+                        <a href="{{ path('home') }}" class="nav-link"><i class="fa fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-clipboard-list"></i> Werkbonnen</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="{{ path('work_orders_index') }}" class="dropdown-item">Overzicht</a>
+                            <a href="{{ path('work_orders_new') }}" class="dropdown-item">Nieuw</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-building"></i> Bedrijven</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="{{ path('show_companys') }}" class="dropdown-item">Overzicht</a>
+                            <a href="{{ path('index_company') }}" class="dropdown-item">Importeren</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fas fa-ticket-alt"></i> Ticket</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="{{ path('ticket_index') }}" class="dropdown-item">Overzicht</a>
+                            <a href="{{ path('ticket_new') }}" class="dropdown-item">Nieuw</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fas fa-clock"></i> Uren registratie</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="{{ path('hours_index') }}" class="dropdown-item">Overzicht</a>
+                            <a href="{{ path('hours_new') }}" class="dropdown-item">Nieuw</a
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="dropdown"><i class="fas fa-archive"></i> Archief</a>
+                        <div class="dropdown-menu dropdown-menu-arrow">
+                            <a href="{{ path('archive_tickets') }}" class="dropdown-item">Tickets</a>
+                            <a href="{{ path('archive_workOrders') }}" class="dropdown-item">Werkbonnen</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
