@@ -3,6 +3,14 @@
 {% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
+
+    {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } ))  >  app.user.contract  %}
+        <div class="alert alert-danger" role="alert">
+            Je bent deze week over je uren heen!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+
     <div class="container-fluid">
         <div class="row mt-3">
             <div class="col-sm">
@@ -117,7 +125,14 @@
                                 <form action="{{ path('save_contract') }}" method="post">
                                     <tr>
                                         <td>
-                                            <div class="form-label">Uren contract invullen</div>
+                                            <div class="form-label">
+                                                {% if user.contract is empty %}
+                                                    <div class="text-red">Uren contract invullen</div>
+                                                    {% else %}
+                                                        Uren contract invullen
+                                                {% endif %}
+
+                                            </div>
                                         </td>
                                         <td>
                                             <label for="contract">

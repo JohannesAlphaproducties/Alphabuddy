@@ -159,7 +159,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -244,7 +244,8 @@
       <workItem from="1586267959447" duration="1285000" />
       <workItem from="1586326867193" duration="57000" />
       <workItem from="1586426170946" duration="2172000" />
-      <workItem from="1586851345415" duration="1506000" />
+      <workItem from="1586851345415" duration="3315000" />
+      <workItem from="1587028939459" duration="1680000" />
     </task>
     <servers />
   </component>
@@ -279,10 +280,10 @@
     </state>
     <state x="254" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1584366642896" />
     <state x="254" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586176416756" />
-    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1586439563490">
+    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1587030367964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586439563490" />
+    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587030367964" />
     <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1583319582761" />
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584711812884" />
     <state x="951" y="259" key="IDE.errors.dialog" timestamp="1580994410721">
@@ -293,9 +294,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="758" y="318" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583308659099" />
-    <state x="461" y="163" key="SettingsEditor" timestamp="1582213507436">
+    <state x="461" y="163" key="SettingsEditor" timestamp="1587030372580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587030372580" />
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582213507436" />
     <state x="1006" y="0" width="930" height="1021" key="dock-window-1" timestamp="1585636971545">
       <screen x="0" y="0" width="1920" height="1040" />
