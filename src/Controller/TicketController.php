@@ -71,7 +71,7 @@ class TicketController extends AbstractController
                     $emailUser = (new Email())
                         ->from('johannes.vlot@alphaproducties.nl')
                         ->to($user->getEmail())
-                        ->text('Je bent verantwoordelijk gesteld op ticket http://localhost/Alphabuddy/public/ticket/'. $ticket->getId())
+                        ->text('Je bent verantwoordelijk gesteld op ticket https:///buddy.alphabuddy/public/ticket/'. $ticket->getId())
                     ;
                     $mailer->send($emailUser);
                 }
@@ -170,7 +170,7 @@ class TicketController extends AbstractController
                     ->from('johannes.vlot@alphaproducties.nl')
                     ->to($ticket->getCompany()->getEmail())
                     ->text('body')
-                    ->attachFromPath('http://localhost/Alphabuddy/data/tickets/' . $id . '.pdf')
+                    ->attachFromPath('https://buddy.alphaproducties/data/tickets/' . $id . '.pdf')
                     ;
                 $mailer->send($message);
             }
