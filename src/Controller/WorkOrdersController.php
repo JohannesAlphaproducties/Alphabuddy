@@ -254,7 +254,7 @@ class WorkOrdersController extends AbstractController
                 ->from('johannes.vlot@alphaproducties.nl')
                 ->to($subScribedUser->getEmail())
                 ->text('Dit is de email voor de medewerkers die een copy willen ontvangen van een afgehandelde werkbon')
-                ->attachFromPath('http://localhost/Alphabuddy/data/workorders/' . $id . '.pdf')
+                ->attachFromPath('../data/workorders/' . $id . '.pdf')
             ;
 
             // Send the message
@@ -270,7 +270,7 @@ class WorkOrdersController extends AbstractController
                 ->from('johannes.vlot@alphaproducties.nl')
                 ->to($emailCompany)
                 ->text('Dit is de email voor de klant')
-                ->attachFromPath('http://localhost/Alphabuddy/data/workorders/' . $id . '.pdf')
+                ->attachFromPath('../data/workorders/' . $id . '.pdf')
                 ;
             $mailer->send($messageCompany);
         }
