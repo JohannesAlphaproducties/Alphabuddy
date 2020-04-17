@@ -7,6 +7,9 @@
 /var/
 /vendor/
 .env
+/src/Controller/WorkOrdersController.php
+/src/Controller/TicketController.php
+/data
 ###< symfony/framework-bundle ###
 sendgrid.env
 "sendgrid.env" 
