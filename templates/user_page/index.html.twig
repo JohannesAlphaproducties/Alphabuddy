@@ -40,7 +40,7 @@
                                         <td>{{ user.username }}</td>
                                         <td>{{ user.name }}</td>
                                         <td>{{ user.lastName }}</td>
-                                        <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                                        <td>{{ user.roles|json_encode() }}</td>
                                         <td>
                                         {% if is_granted('ROLE_ADMIN') %}
                                             <a href="{{ path('app_userpage_deleteuser', {'id': user.id }) }}" class="btn btn-danger btn-sm">Delete</a>
