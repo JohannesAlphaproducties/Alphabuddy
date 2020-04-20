@@ -170,7 +170,7 @@ class TicketController extends AbstractController
                     ->from('johannes.vlot@alphaproducties.nl')
                     ->to($ticket->getCompany()->getEmail())
                     ->text('body')
-                    ->attachFromPath('https://buddy.alphaproducties/data/tickets/' . $id . '.pdf')
+                    ->attachFromPath('../data/tickets/' . $id . '.pdf')
                     ;
                 $mailer->send($message);
             }
