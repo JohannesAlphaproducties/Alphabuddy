@@ -3,12 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Bug;
-use App\Entity\Ticket;
 use App\Entity\User;
-use App\Repository\HoursRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Client\Response;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,8 +23,8 @@ class ProfileController extends AbstractController
      */
     public function index()
     {
-        $hours = $this->getUser()->getHours();
         $user = $this->getUser();
+        $hours = $user->getHours();
         $bugs = $this->getDoctrine()->getRepository(Bug::class)->findAll();
 
         return $this->render('profile/index.html.twig', [
@@ -49,8 +45,7 @@ class ProfileController extends AbstractController
     {
         $workOrderSwitch = $request->get('workOrderSwitch');
 
-
-        $this->getUser()->setSubsribedWorkOrder($workOrderSwitch);
+        $this->getUser()->setSubscribedWorkOrder($workOrderSwitch);
         $this->em->flush();
 
         return $this->redirectToRoute('profile');
@@ -73,6 +68,8 @@ class ProfileController extends AbstractController
 
     /**
      * @Route("/save/subscription/responsible", name="subscribe_responsible_ticket", methods={"POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function subscribeResponsible(Request $request)
     {

@@ -4,11 +4,13 @@
 
 {% block body %}
 
-    {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } ))  >  app.user.contract  %}
-        <div class="alert alert-danger" role="alert">
-            Je bent deze week over je uren heen!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
-        </div>
+    {% if app.user.contract > 0 %}
+        {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } ))  >  app.user.contract  %}
+            <div class="alert alert-danger" role="alert">
+                Je bent deze week {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } )) - app.user.contract }} uur over je uren heen!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
     {% endif %}
 
     <div class="container-fluid">
@@ -74,64 +76,54 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <form action="{{ path('subscribe_workOrder') }}" method="post">
-                                    <tr>
-                                        <td>
-                                            <div class="form-label">Copie ontvangen van afgehandelde werkbonnen</div>
-                                        </td>
-                                        <td>
-                                            <label class="custom-switch">
-                                                <input type="checkbox" name="workOrderSwitch" class="custom-switch-input" {% if user.subsribedWorkOrder == 1 %}checked{% endif %}>
-                                                <span class="custom-switch-indicator"></span>
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
-                                        </td>
-                                    </tr>
-                                </form>
-                                <form action="{{ path('subscribe_ticket') }}" method="post">
-                                    <tr>
+                                <tr>
+                                    <form action="{{ path('subscribe_workOrder') }}" method="post" id="form-workOrder">
+                                            <td>
+                                                <div class="form-label">Copie ontvangen van afgehandelde werkbonnen</div>
+                                            </td>
+                                            <td>
+                                                <label class="custom-switch">
+                                                    <input id="switch1" type="checkbox" name="workOrderSwitch" class="custom-switch-input" {% if user.subscribedWorkOrder == 1 %}checked{% endif %}>
+                                                    <span class="custom-switch-indicator"></span>
+                                                </label>
+                                            </td>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="{{ path('subscribe_ticket') }}" method="post" id="form-ticket">
                                         <td>
                                             <div class="form-label">Copie ontvangen van afgehandelde tickets</div>
                                         </td>
                                         <td>
                                             <label class="custom-switch">
-                                                <input type="checkbox" name="workOrderSwitch" class="custom-switch-input" {% if user.subscribedTicket == 1 %}checked{% endif %}>
+                                                <input id="switch2" type="checkbox" name="ticketSwitch" class="custom-switch-input" {% if user.subscribedTicket == 1 %}checked{% endif %}>
                                                 <span class="custom-switch-indicator"></span>
                                             </label>
                                         </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
-                                        </td>
-                                    </tr>
-                                </form>
-                                <form action="{{ path('subscribe_responsible_ticket') }}" method="post">
-                                    <tr>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="{{ path('subscribe_responsible_ticket') }}" method="post" id="form-subscribeTicket">
                                         <td>
                                             <div class="form-label">Mail ontvangen wanneer je verantwoordelijk wordt gesteld voor een ticket</div>
                                         </td>
                                         <td>
                                             <label class="custom-switch">
-                                                <input type="checkbox" name="workOrderSwitch" class="custom-switch-input" {% if user.subscribedResponsibleTicket == 1 %}checked{% endif %}>
+                                                <input id="switch3" type="checkbox" name="ResponsibleSwitch" class="custom-switch-input" {% if user.subscribedResponsibleTicket == 1 %}checked{% endif %}>
                                                 <span class="custom-switch-indicator"></span>
                                             </label>
                                         </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
-                                        </td>
-                                    </tr>
-                                </form>
-                                <form action="{{ path('save_contract') }}" method="post">
-                                    <tr>
+                                    </form>
+                                </tr>
+                                <tr>
+                                    <form action="{{ path('save_contract') }}" method="post">
                                         <td>
                                             <div class="form-label">
                                                 {% if user.contract is empty %}
                                                     <div class="text-red">Uren contract invullen</div>
-                                                    {% else %}
-                                                        Uren contract invullen
+                                                {% else %}
+                                                    Uren contract invullen
                                                 {% endif %}
-
                                             </div>
                                         </td>
                                         <td>
@@ -142,8 +134,8 @@
                                         <td>
                                             <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
                                         </td>
-                                    </tr>
-                                </form>
+                                    </form>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -185,5 +177,22 @@
             </div>
         </div>
     </div>
+
+    <script>
+        //subscribe workOrder
+        $("#switch1").click( function () {
+            $.post( $("#form-workOrder").attr("action"), $("#form-workOrder").serializeArray());
+        });
+
+        //subscribe ticket
+        $("#switch2").click( function () {
+            $.post( $("#form-ticket").attr("action"), $("#form-ticket").serializeArray());
+        });
+
+        //subscribe Responsible Ticket
+        $("#switch3").click( function () {
+            $.post( $("#form-subscribeTicket").attr("action"), $("#form-subscribeTicket").serializeArray());
+        });
+    </script>
 
 {% endblock %}

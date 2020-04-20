@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce697d0d-48ca-420f-99a9-ae3a24b9922f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +248,8 @@
       <workItem from="1586851345415" duration="3315000" />
       <workItem from="1587028939459" duration="3930000" />
       <workItem from="1587039553848" duration="6375000" />
-      <workItem from="1587104852841" duration="4495000" />
+      <workItem from="1587104852841" duration="12685000" />
+      <workItem from="1587364792120" duration="4117000" />
     </task>
     <servers />
   </component>
@@ -344,11 +347,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" width="725" height="1019" key="dock-window-9/0.0.1920.1040@0.0.1920.1040" timestamp="1581578712560" />
-    <state x="2538" y="94" width="684" height="852" key="find.popup" timestamp="1587109678264">
+    <state x="2533" y="105" width="684" height="852" key="find.popup" timestamp="1587116040604">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1586851438777" />
-    <state x="2538" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587109678264" />
+    <state x="2533" y="105" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587116040604" />
     <state x="753" y="152" width="684" height="852" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585556118001" />
     <state x="686" y="158" key="refactoring.ChangeSignatureDialog" timestamp="1583328448519">
       <screen x="0" y="0" width="1920" height="1040" />

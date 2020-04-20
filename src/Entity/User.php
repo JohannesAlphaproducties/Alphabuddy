@@ -70,7 +70,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $subsribedWorkOrder;
+    private $subscribedWorkOrder;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -290,14 +290,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getSubsribedWorkOrder(): ?bool
+    public function getSubscribedWorkOrder(): ?bool
     {
-        return $this->subsribedWorkOrder;
+        return $this->subscribedWorkOrder;
     }
 
-    public function setSubsribedWorkOrder(?bool $subsribedWorkOrder): self
+    public function setSubscribedWorkOrder(?bool $subscribedWorkOrder): self
     {
-        $this->subsribedWorkOrder = $subsribedWorkOrder;
+        $this->subscribedWorkOrder = $subscribedWorkOrder;
 
         return $this;
     }
