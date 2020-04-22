@@ -51,6 +51,10 @@ class TicketController extends AbstractController
 
     /**
      * @Route("/new", name="ticket_new", methods={"GET","POST"})
+     * @param Request $request
+     * @param MailerInterface $mailer
+     * @return Response
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
     public function new(Request $request, MailerInterface $mailer): Response
     {

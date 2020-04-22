@@ -18,11 +18,7 @@
                     <td>{{ ticket.id }}</td>
                     <td>{{ ticket.priority }}</td>
                     <td><a href="{{ path('ticket_show', {'id': ticket.id}) }}">{{ ticket.description|striptags }}</a></td>
-                    {% if ticket.status == 'klaar' %}
-                        <td class="text-success"> {{ ticket.status }}</td>
-                    {% else %}
-                        <td>{{ ticket.status }}</td>
-                    {% endif %}
+                    <td>{{ ticket.status }}</td>
                     <td><a href="{{ path('showOne_company', {'id': ticket.company.id }) }}">{{ ticket.company }}</a></td>
                     <td>{% for responsible in ticket.responsible %}
                             {{ responsible.name }}

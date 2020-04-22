@@ -39,7 +39,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function findSubscribedWorkOrder()
     {
         return $this->createQueryBuilder('user')
-            ->where('user.subsribedWorkOrder = 1')
+            ->where('user.subscribedWorkOrder = 1')
             ->getQuery()
             ->getResult();
     }
