@@ -255,6 +255,7 @@
       <workItem from="1587476992773" duration="3214000" />
       <workItem from="1587540763487" duration="2535000" />
       <workItem from="1587562224294" duration="27000" />
+      <workItem from="1587624448062" duration="886000" />
     </task>
     <servers />
   </component>
@@ -295,11 +296,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2643" y="430" key="ComposerInitDialogKey/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587477233649" />
-    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1587562251702">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2783" y="291" key="FileChooserDialogImpl" timestamp="1587625702385">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587562251702" />
-    <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587543448516" />
+    <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587625702385" />
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584711812884" />
     <state x="951" y="259" key="IDE.errors.dialog" timestamp="1580994410721">
       <screen x="0" y="0" width="1920" height="1040" />
