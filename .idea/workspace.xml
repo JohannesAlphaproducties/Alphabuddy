@@ -160,7 +160,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../woordenboek" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="LogHighlighting" />
   </component>
   <component name="RecentsManager">
@@ -256,6 +256,7 @@
       <workItem from="1587540763487" duration="2535000" />
       <workItem from="1587562224294" duration="27000" />
       <workItem from="1587624448062" duration="886000" />
+      <workItem from="1587643977594" duration="1687000" />
     </task>
     <servers />
   </component>
@@ -357,11 +358,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" width="725" height="1019" key="dock-window-9/0.0.1920.1040@0.0.1920.1040" timestamp="1581578712560" />
-    <state x="2533" y="105" width="684" height="852" key="find.popup" timestamp="1587543337631">
+    <state x="2533" y="105" width="684" height="852" key="find.popup" timestamp="1587645286492">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587536487225" />
-    <state x="2533" y="105" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587543337631" />
+    <state x="2533" y="105" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587645286492" />
     <state x="753" y="152" width="684" height="852" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585556118001" />
     <state x="686" y="158" key="refactoring.ChangeSignatureDialog" timestamp="1583328448519">
       <screen x="0" y="0" width="1920" height="1040" />
