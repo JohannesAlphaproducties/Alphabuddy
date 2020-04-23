@@ -160,7 +160,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../woordenboek" />
     <property name="settings.editor.selected.configurable" value="LogHighlighting" />
   </component>
   <component name="RecentsManager">
@@ -253,7 +253,8 @@
       <workItem from="1587364792120" duration="10358000" />
       <workItem from="1587450490544" duration="821000" />
       <workItem from="1587476992773" duration="3214000" />
-      <workItem from="1587540763487" duration="2332000" />
+      <workItem from="1587540763487" duration="2535000" />
+      <workItem from="1587562224294" duration="27000" />
     </task>
     <servers />
   </component>
@@ -294,11 +295,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2643" y="430" key="ComposerInitDialogKey/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587477233649" />
-    <state x="2783" y="291" key="FileChooserDialogImpl" timestamp="1587537242944">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1587562251702">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587030367964" />
-    <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587537242944" />
+    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587562251702" />
+    <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587543448516" />
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584711812884" />
     <state x="951" y="259" key="IDE.errors.dialog" timestamp="1580994410721">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -355,11 +356,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" width="725" height="1019" key="dock-window-9/0.0.1920.1040@0.0.1920.1040" timestamp="1581578712560" />
-    <state x="618" y="94" width="684" height="852" key="find.popup" timestamp="1587536487225">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2533" y="105" width="684" height="852" key="find.popup" timestamp="1587543337631">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587536487225" />
-    <state x="2533" y="105" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587389731382" />
+    <state x="2533" y="105" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587543337631" />
     <state x="753" y="152" width="684" height="852" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585556118001" />
     <state x="686" y="158" key="refactoring.ChangeSignatureDialog" timestamp="1583328448519">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -72,7 +72,6 @@
                                 <tr>
                                     <th>Optie</th>
                                     <th>Aan/uit</th>
-                                    <th>Opslaan</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -130,8 +129,6 @@
                                             <label for="contract">
                                                 <input type="text" name="contract" id="contract" value="{{ user.contract }}" class="form-control">
                                             </label>
-                                        </td>
-                                        <td>
                                             <button type="submit" class="btn btn-green btn-sm">Opslaan</button>
                                         </td>
                                     </form>
@@ -160,7 +157,7 @@
                 <div class="card-body">
                     <div class="list-group">
                         {% for bug in bugs %}
-                        <ul class="list-unstyled">
+                        <ul class="list">
                             <li class="media">
                                 {{ bug.date ? bug.date|date('Y-m-d') : '' }}
                                 <div class="media-body ml-3">
