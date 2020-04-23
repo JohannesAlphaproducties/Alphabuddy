@@ -29,7 +29,16 @@ class WorkOrdersType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'choices' => ['nieuw' => 'nieuw' , 'bezig' => 'bezig', 'Spullen moeten besteld worden' => 'spullen moeten besteld worden', 'spullen besteld' => 'spullen besteld', 'wachten op externe monteur' => 'wachten op externe monteur', 'wachten op backorder' => 'wachten op backorder', 'opnieuw inplannen' => 'opnieuw inplannen', 'afgesloten' => 'afgesloten'],
+                'choices' => [
+                    'nieuw' => 'nieuw',
+                    'bezig' => 'bezig',
+                    'Spullen moeten besteld worden' => 'spullen moeten besteld worden',
+                    'spullen besteld' => 'spullen besteld',
+                    'wachten op externe monteur' => 'wachten op externe monteur',
+                    'wachten op backorder' => 'wachten op backorder',
+                    'opnieuw inplannen' => 'opnieuw inplannen',
+                    'afgesloten' => 'afgesloten'
+                ],
             ])
             ->add('time', DateTimeType::class, [
                 'widget' => 'single_text',

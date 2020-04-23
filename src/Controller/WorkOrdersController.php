@@ -213,6 +213,8 @@ class WorkOrdersController extends AbstractController
             $decoded_image = base64_decode($encoded_image);
             file_put_contents("../data/signatures/" . $id . ".png", $decoded_image);
 
+            //after sign close workorder
+            $workOrder->setStatus('afgesloten');
             $workOrder->setSignedBy($signedBy);
             $this->em->persist($workOrder);
             $this->em->flush();
