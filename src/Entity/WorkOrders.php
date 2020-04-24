@@ -67,7 +67,7 @@ class WorkOrders
     public function __construct()
     {
         $this->mechanic = new ArrayCollection();
-        $this->time = new \DateTime("now");
+        $this->time = new \DateTime("now", "local");
         $this->hours = new ArrayCollection();
     }
 
