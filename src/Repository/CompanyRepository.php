@@ -59,6 +59,14 @@ class CompanyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findAllCompanies()
+    {
+        return $this->createQueryBuilder('q')
+            ->orderBy('q.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 
 
 //    public function findOneBySomeField($value): ?Company

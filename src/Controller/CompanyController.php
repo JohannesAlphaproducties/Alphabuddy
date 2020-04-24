@@ -97,7 +97,7 @@ class CompanyController extends AbstractController
      */
     public function showCompanys(Request $request, PaginatorInterface $paginator)
     {
-        $results = $this->getDoctrine()->getRepository(Company::class)->findAll();
+        $results = $this->getDoctrine()->getRepository(Company::class)->findAllCompanies();
 
         $companys = $paginator->paginate($results, $request->query->getInt('page', 1), 10);
 

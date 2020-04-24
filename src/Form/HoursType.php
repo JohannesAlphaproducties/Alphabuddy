@@ -27,6 +27,7 @@ class HoursType extends AbstractType
             ->add('hours', NumberType::class, [
                 'attr' => [
                     'class' => 'form-control',
+                    'type' => 'datetime-local',
                 ]
             ])
             ->add('date', DateTimeType::class, [

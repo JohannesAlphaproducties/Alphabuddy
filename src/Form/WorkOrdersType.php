@@ -44,6 +44,7 @@ class WorkOrdersType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control h-25',
+                    'type' => 'datetime-local',
                 ],
             ])
             ->add('comment', TextareaType::class, [
