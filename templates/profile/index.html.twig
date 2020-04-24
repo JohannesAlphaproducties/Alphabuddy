@@ -14,56 +14,11 @@
     {% endif %}
 
     <div class="container-fluid">
-        <div class="row mt-3">
-            <div class="col-sm">
-                <div class="card shadow">
-                    <div class="card-header">
-                        <h3 class="m-0">Mijn uren </h3>
-                        <div class="card-options">
-                            <h3 class="text-muted m-0">{{ "monday this week"|date("m/d/Y") }} - {{ "saturday this week"|date("m/d/Y") }}</h3>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th>Datum</th>
-                                    <th>Aantal uren</th>
-                                    <th>Werkbon</th>
-                                    <th>Beschrijving</th>
-                                    <th>Actie</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for hour in hours %}
-                                    {% if hour.date > date('monday this week')%}
-                                        <tr>
-                                            <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
-                                            <td>{{ hour.hours }}</td>
-                                            <td><a href="{{ path('work_orders_show', {'id': hour.workOrder.id }) }}">{{ hour.workOrder }}</a></td>
-                                            <td>{{ hour.description }}</td>
-                                            <td>{{ include('hours/_delete_form.html.twig') }}</td>
-                                        </tr>
-                                    {% endif %}
-                                {% else %}
-                                    <p>Geen Uren geregistreerd</p>
-                                {% endfor %}
-                                <tr>
-                                    <td><p class="font-weight-bold">Totaal {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } )) }}</p></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     <div class="row">
             <div class="col-sm">
                 <div class="card">
                     <div class="card-header">
-                        <h6>Overige Optie's</h6>
+                        <div class="card-title">Mail optie's</div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

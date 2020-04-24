@@ -17,7 +17,7 @@
             <div class="col-sm">
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h6 class="m-0 font-weight-bold text-primary">Gebruikers overzicht ({{ users|length }})</h6>
+                        <div class="card-title">Gebruikers overzicht ({{ users|length }})</div>
                     </div>
                     <div class="card-body">
                         {% if is_granted("ROLE_ADMIN") %}
