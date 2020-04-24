@@ -31,7 +31,7 @@ class HoursType extends AbstractType
                 ]
             ])
             ->add('date', DateTimeType::class, [
-                'widget' => 'single_text',
+//                'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control h-25',
                 ]
