@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class ProfileController extends AbstractController
 {
@@ -94,4 +95,22 @@ class ProfileController extends AbstractController
 
         return $this->redirectToRoute('profile');
     }
+
+    /**
+     * @Route("/change/password", name="change_password")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function changePassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $new_pass_confirm = $request->get('newPassword');
+
+        $user = $this->getUser();
+
+        $new_pass_encoded = $passwordEncoder->encodePassword($user, $new_pass_confirm);
+        $this->getUser()->setPassword($new_pass_encoded);
+        $this->em->flush();
+
+        return $this->redirectToRoute('profile');
+    }
+
 }

@@ -100,6 +100,23 @@
         <div class="col-sm">
             <div class="card">
                 <div class="card-header">
+                    <div class="card-title">Wachtwoord veranderen</div>
+                </div>
+                <div class="card-body">
+                    <form action="{{ path('change_password') }}" name="changePassword">
+                        <label for="changePassword">
+                            <input type="password" id="changePassword" class="form-control" name="newPassword" placeholder="Nieuw wachtwoord">
+                        </label>
+                        <button type="submit" class="btn btn-sm btn-green">Opslaan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header">
                     <div class="card-title">Bugs</div>
                 </div>
                 <div class="card-body">
