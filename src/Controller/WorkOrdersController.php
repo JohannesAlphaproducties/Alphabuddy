@@ -47,8 +47,9 @@ class WorkOrdersController extends AbstractController
 
     /**
      * @Route("/new", name="work_orders_new", methods={"GET","POST"})
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function new(Request $request): Response
+    public function new(Request $request, MailerInterface $mailer): Response
     {
         $workOrder = new WorkOrders();
         $form = $this->createForm(WorkOrdersType::class, $workOrder);
@@ -59,6 +60,17 @@ class WorkOrdersController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($workOrder);
             $entityManager->flush();
+
+            //loop responsible users
+            foreach ($workOrder->getMechanic() as $user) {
+                //check witch users are subscribed
+                $emailUser = (new Email())
+                    ->from('johannes.vlot@alphaproducties.nl')
+                    ->to($user->getEmail())
+                    ->text('Je bent verantwoordelijk gesteld op werkbon https://buddy.alphabuddy/public/workorder/'. $workOrder->getId())
+                    ;
+                $mailer->send($emailUser);
+            }
 
             return $this->redirectToRoute('work_orders_show', [
                 'id' => $workOrder->getId(),

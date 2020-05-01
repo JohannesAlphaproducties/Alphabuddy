@@ -87,6 +87,11 @@ class User implements UserInterface
      */
     private $contract;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $subscribedResponsibleWorkOrder;
+
     public function __construct()
     {
         $this->workOrders = new ArrayCollection();
@@ -334,6 +339,18 @@ class User implements UserInterface
     public function setContract(?string $contract): self
     {
         $this->contract = $contract;
+
+        return $this;
+    }
+
+    public function getSubscribedResponsibleWorkOrder(): ?bool
+    {
+        return $this->subscribedResponsibleWorkOrder;
+    }
+
+    public function setSubscribedResponsibleWorkOrder(?bool $subscribedResponsibleWorkOrder): self
+    {
+        $this->subscribedResponsibleWorkOrder = $subscribedResponsibleWorkOrder;
 
         return $this;
     }

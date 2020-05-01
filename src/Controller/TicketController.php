@@ -70,7 +70,7 @@ class TicketController extends AbstractController
 
             //loop responsible users
             foreach ($ticket->getResponsible() as $user) {
-                //check wich users are subscribed
+                //check witch users are subscribed
                 if ($user->getSubscribedResponsibleTicket() === true) {
                     $emailUser = (new Email())
                         ->from('johannes.vlot@alphaproducties.nl')

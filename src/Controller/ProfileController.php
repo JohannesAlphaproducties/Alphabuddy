@@ -80,8 +80,23 @@ class ProfileController extends AbstractController
         $this->em->flush();
 
         return $this->redirectToRoute('profile');
-
     }
+
+    /**
+     * @Route("/save/subscription/responsible/workOrder", name="subscribe_responsible_workOrder", methods={"POST"})
+     */
+    public function subscribeResponsibleWorkOrder(Request $request)
+    {
+        $responsibleSwitchWorkOrder = $request->get('ResponsibleSwitchWorkOrder');
+
+        $this->getUser()->setSubscribedResponsibleWorkOrder($responsibleSwitchWorkOrder);
+        $this->em->flush();
+
+        return $this->redirectToRoute('profile');
+    }
+
+
+
 
     /**
      * @Route("/save/contract", name="save_contract")

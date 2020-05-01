@@ -70,6 +70,19 @@
                                     </form>
                                 </tr>
                                 <tr>
+                                    <form action="{{ path('subscribe_responsible_workOrder') }}" method="post" id="form-subscribeWorkOrder">
+                                        <td>
+                                            <div class="form-label">Mail ontvangen wanneer je verantwoordelijk wordt gesteld voor een werkbon</div>
+                                        </td>
+                                        <td>
+                                            <label class="custom-switch">
+                                                <input id="switch4" type="checkbox" name="ResponsibleSwitchWorkOrder" class="custom-switch-input" {% if user.subscribedResponsibleWorkOrder == 1 %}checked{% endif %}>
+                                                <span class="custom-switch-indicator"></span>
+                                            </label>
+                                        </td>
+                                    </form>
+                                </tr>
+                                <tr>
                                     <form action="{{ path('save_contract') }}" method="post">
                                         <td>
                                             <div class="form-label">
@@ -161,6 +174,11 @@
         //subscribe Responsible Ticket
         $("#switch3").click( function () {
             $.post( $("#form-subscribeTicket").attr("action"), $("#form-subscribeTicket").serializeArray());
+        });
+
+        //subscribe Responsible WorkOrder
+        $("#switch4").click( function () {
+            $.post( $("#form-subscribeWorkOrder").attr("action"), $("#form-subscribeWorkOrder").serializeArray());
         });
     </script>
 
