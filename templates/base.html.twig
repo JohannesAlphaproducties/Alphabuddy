@@ -40,6 +40,13 @@
         {% include 'home/index.html.twig' %}
     {% endblock %}
     </div>
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script>
+            $(document).ready(function() {
+                $('.js-select').select2();
+            });
+        </script>
+    {% endblock %}
+
     </body>
 </html>
