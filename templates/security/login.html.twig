@@ -19,6 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 </head>
 <body>
+
 <div class="page">
     <div class="page-single">
         <div class="container">
@@ -27,6 +28,9 @@
                     <form method="post" class="card">
                         <div class="card-body p-6">
                             <div class="card-title">Alphabuddy</div>
+                            {% if error %}
+                                {{ error.message }}
+                            {% endif %}
                             <div class="form-group">
                                 <label class="form-label sr-only">Email</label>
                                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"

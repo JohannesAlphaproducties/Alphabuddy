@@ -23,6 +23,8 @@ class UserPageController extends AbstractController
      */
     public function index()
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         $hours = $this->getDoctrine()->getRepository(Hours::class)->findAll();
 
@@ -40,6 +42,8 @@ class UserPageController extends AbstractController
      */
     public function deleteUser($id)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         //get user by id
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);
 

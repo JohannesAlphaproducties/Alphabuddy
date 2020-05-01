@@ -158,6 +158,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -259,7 +260,11 @@
       <workItem from="1587643977594" duration="3290000" />
       <workItem from="1587709617086" duration="2750000" />
       <workItem from="1587714636798" duration="11230000" />
-      <workItem from="1587736104378" duration="2350000" />
+      <workItem from="1587736104378" duration="2775000" />
+      <workItem from="1588068758463" duration="73000" />
+      <workItem from="1588075774753" duration="601000" />
+      <workItem from="1588249729279" duration="870000" />
+      <workItem from="1588327875292" duration="596000" />
     </task>
     <servers />
   </component>
@@ -300,11 +305,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2643" y="430" key="ComposerInitDialogKey/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587477233649" />
-    <state x="2783" y="291" key="FileChooserDialogImpl" timestamp="1587735790349">
+    <state x="2783" y="291" key="FileChooserDialogImpl" timestamp="1588076562215">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587713020405" />
-    <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587735790349" />
+    <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588076562215" />
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584711812884" />
     <state x="951" y="259" key="IDE.errors.dialog" timestamp="1580994410721">
       <screen x="0" y="0" width="1920" height="1040" />
