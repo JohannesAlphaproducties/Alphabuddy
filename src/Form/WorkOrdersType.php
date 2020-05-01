@@ -23,7 +23,7 @@ class WorkOrdersType extends AbstractType
             ->add('titel', TextType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                ]
+                ],
             ])
             ->add('status', ChoiceType::class, [
                 'attr' => [
@@ -47,17 +47,20 @@ class WorkOrdersType extends AbstractType
                     'class' => 'form-control h-25',
                     'type' => 'datetime-local',
                 ],
+                'label' => 'Tijd',
             ])
             ->add('comment', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                ]
+                ],
+                'label' => 'Commentaar',
             ])
             ->add('priority', ChoiceType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
                 'choices' => ['1' => '1', '2' => '2', '3' => '3'],
+                'label' => 'Prioritijd',
             ])
             ->add('mechanic', EntityType::class, [
                 'attr' => [
@@ -66,6 +69,7 @@ class WorkOrdersType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'name',
                 'multiple' => 'multiple',
+                'label' => 'Monteur',
             ])
 
             ->add('company', EntityType::class, [
@@ -73,6 +77,7 @@ class WorkOrdersType extends AbstractType
                     'class' => 'form-control js-select',
                 ],
                 'class' => Company::class,
+                'label' => 'Bedrijf',
             ])
         ;
     }

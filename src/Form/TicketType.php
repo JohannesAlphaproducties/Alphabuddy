@@ -24,11 +24,13 @@ class TicketType extends AbstractType
                     'class' => 'form-control',
                 ],
                 'choices' => ['1' => '1', '2' => '2', '3' => '3'],
+                'label' => 'Prioritijd',
             ])
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
+                'label' => 'Beschrijving',
             ])
             ->add('status', ChoiceType::class, [
                 'attr' => [
@@ -43,12 +45,14 @@ class TicketType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'name',
                 'multiple' => true,
+                'label' => 'Verantwoordelijk',
             ])
             ->add('company', EntityType::class, [
                 'attr' => [
                     'class' => 'form-control js-select',
                 ],
                 'class' => Company::class,
+                'label' => 'Bedrijf',
             ])
         ;
     }

@@ -22,19 +22,22 @@ class HoursType extends AbstractType
             ->add('description', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
-                ]
+                ],
+                'label' => 'Beschrijving',
             ])
             ->add('hours', NumberType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'type' => 'datetime-local',
-                ]
+                ],
+                'label' => 'Uren',
             ])
             ->add('date', DateTimeType::class, [
 //                'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control h-25',
-                ]
+                ],
+                'label' => 'Datum',
             ])
             ->add('workorder', EntityType::class, [
                 'attr' => [
@@ -45,6 +48,7 @@ class HoursType extends AbstractType
                 },
                 'required' => true,
                 'class' => WorkOrders::class,
+                'label' => 'Werkbon',
             ])
         ;
     }
