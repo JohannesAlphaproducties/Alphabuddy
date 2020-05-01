@@ -41,6 +41,7 @@ class TicketType extends AbstractType
                     'class' => 'form-control js-select',
                 ],
                 'class' => User::class,
+                'choice_label' => 'name',
                 'multiple' => true,
             ])
             ->add('company', EntityType::class, [

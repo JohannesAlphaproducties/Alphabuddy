@@ -40,6 +40,9 @@ class HoursType extends AbstractType
                 'attr' => [
                     'class' => 'form-control js-select required',
                 ],
+                'choice_label' => function ($workOrder) {
+                    return $workOrder->getTitel(). ' ' . $workOrder->getCompany();
+                },
                 'required' => true,
                 'class' => WorkOrders::class,
             ])
