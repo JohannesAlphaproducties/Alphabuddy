@@ -68,7 +68,7 @@ class WorkOrdersController extends AbstractController
                     ->subject('Verantwoordelijk gezet op werkbon ' . $workOrder->getTitel())
                     ->from('johannes.vlot@alphaproducties.nl')
                     ->to($user->getEmail())
-                    ->text('Je bent verantwoordelijk gesteld op werkbon https://buddy.alphaproducties.nl/workorder/'. $workOrder->getId())
+                    ->text('Je bent verantwoordelijk gesteld op werkbon https://buddy.alphaproducties.nl/work/orders/'. $workOrder->getId())
                     ;
                 $mailer->send($emailUser);
             }
