@@ -65,9 +65,10 @@ class WorkOrdersController extends AbstractController
             foreach ($workOrder->getMechanic() as $user) {
                 //check witch users are subscribed
                 $emailUser = (new Email())
+                    ->subject('Verantwoordelijk gezet op werkbon ' . $workOrder->getTitel())
                     ->from('johannes.vlot@alphaproducties.nl')
                     ->to($user->getEmail())
-                    ->text('Je bent verantwoordelijk gesteld op werkbon https://buddy.alphabuddy/public/workorder/'. $workOrder->getId())
+                    ->text('Je bent verantwoordelijk gesteld op werkbon https://buddy.alphaproducties.nl/workorder/'. $workOrder->getId())
                     ;
                 $mailer->send($emailUser);
             }

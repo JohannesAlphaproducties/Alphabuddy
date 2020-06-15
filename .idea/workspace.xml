@@ -265,7 +265,10 @@
       <workItem from="1588075774753" duration="601000" />
       <workItem from="1588249729279" duration="870000" />
       <workItem from="1588327875292" duration="950000" />
-      <workItem from="1588329798691" duration="8345000" />
+      <workItem from="1588329798691" duration="9802000" />
+      <workItem from="1591598147920" duration="239000" />
+      <workItem from="1591598501709" duration="1223000" />
+      <workItem from="1592213482331" duration="682000" />
     </task>
     <servers />
   </component>
@@ -273,30 +276,18 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="679" y="75" key="#PHP" timestamp="1583331558165">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="679" y="75" key="#PHP/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583331558165" />
-    <state x="959" y="183" key="#SQL_Dialects" timestamp="1582031636904">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="959" y="183" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1582031636904" />
     <state x="974" y="314" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583917167041">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="974" y="314" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583917167041" />
-    <state x="974" y="314" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1581085323544" />
     <state x="2080" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1587039462082">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2080" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587039462082" />
-    <state x="160" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582286093622" />
     <state x="2610" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587047177191">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583491223367" />
     <state x="2610" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587047177191" />
-    <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581675889702" />
     <state x="254" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587724802107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -312,20 +303,11 @@
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587713020405" />
     <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588076562215" />
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584711812884" />
-    <state x="951" y="259" key="IDE.errors.dialog" timestamp="1580994410721">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="951" y="259" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580994410721" />
-    <state x="758" y="318" key="NewPhpClassDialog" timestamp="1583308659099">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="758" y="318" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583308659099" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1587481646615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587481646615" />
     <state x="2381" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587039471385" />
-    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582213507436" />
     <state x="2017" y="-19" width="1511" height="955" maximized="true" key="dock-window-1" timestamp="1588341710683">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -335,53 +317,16 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1423" height="1022" key="dock-window-2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583940079231" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1582193464804" />
-    <state x="1964" y="13" width="1458" height="1022" key="dock-window-3" timestamp="1583487531792">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1964" y="13" width="1458" height="1022" key="dock-window-3/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583487531792" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-3/0.0.1920.1040@0.0.1920.1040" timestamp="1582194106726" />
-    <state x="1920" y="0" width="1458" height="1022" key="dock-window-4" timestamp="1583490597244">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1920" y="0" width="1458" height="1022" key="dock-window-4/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583490597244" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-4/0.0.1920.1040@0.0.1920.1040" timestamp="1582123130157" />
     <state x="1920" y="0" width="1458" height="1022" key="dock-window-5" timestamp="1583738740190">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1458" height="1022" key="dock-window-5/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583738740190" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-5/0.0.1920.1040@0.0.1920.1040" timestamp="1582123500119" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-6" timestamp="1581420561904">
+    <state x="618" y="94" width="684" height="852" key="find.popup" timestamp="1592214151552">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-6/0.0.1920.1040@0.0.1920.1040" timestamp="1581420561904" />
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-7" timestamp="1581426142571">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-7" y="0" width="974" height="1047" key="dock-window-7/0.0.1920.1040@0.0.1920.1040" timestamp="1581426142571" />
-    <state x="0" y="0" width="1008" height="1019" key="dock-window-8" timestamp="1581427183318">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="0" y="0" width="1008" height="1019" key="dock-window-8/0.0.1920.1040@0.0.1920.1040" timestamp="1581427183318" />
-    <state x="0" y="0" width="725" height="1019" key="dock-window-9" timestamp="1581578712560">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="0" y="0" width="725" height="1019" key="dock-window-9/0.0.1920.1040@0.0.1920.1040" timestamp="1581578712560" />
-    <state x="2533" y="106" width="684" height="852" key="find.popup" timestamp="1587735781613">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587720345494" />
+    <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592214151552" />
     <state x="2533" y="106" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587735781613" />
     <state x="753" y="152" width="684" height="852" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585556118001" />
-    <state x="686" y="158" key="refactoring.ChangeSignatureDialog" timestamp="1583328448519">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="686" y="158" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583328448519" />
-    <state x="720" y="244" width="672" height="677" key="run.anything.popup" timestamp="1583236158883">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="720" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583236158883" />
-    <state x="720" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582281840061" />
     <state x="2712" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1587040734920">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>

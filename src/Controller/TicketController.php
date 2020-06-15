@@ -73,9 +73,10 @@ class TicketController extends AbstractController
                 //check witch users are subscribed
                 if ($user->getSubscribedResponsibleTicket() === true) {
                     $emailUser = (new Email())
+                        ->subject('Verantwoodelijk gezet op ticket ' . $ticket->getCompany()->getName())
                         ->from('johannes.vlot@alphaproducties.nl')
                         ->to($user->getEmail())
-                        ->text('Je bent verantwoordelijk gesteld op ticket https:///buddy.alphabuddy/public/ticket/'. $ticket->getId())
+                        ->text('Je bent verantwoordelijk gesteld op ticket https:///buddy.alphaproducties.nl/ticket/'. $ticket->getId())
                     ;
                     $mailer->send($emailUser);
                 }
