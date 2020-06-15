@@ -6,7 +6,6 @@ use App\Entity\Company;
 use App\Entity\Ticket;
 use App\Entity\WorkOrders;
 use App\Form\CompanyType;
-use App\Form\SearchFormType;
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -99,11 +98,8 @@ class CompanyController extends AbstractController
     {
         $results = $this->getDoctrine()->getRepository(Company::class)->findAllCompanies();
 
-        $companys = $paginator->paginate($results, $request->query->getInt('page', 1), 10);
-
         return $this->render('company/index.html.twig', [
-            'companys' => $companys,
-            'all' => $results,
+            'companys' => $results,
         ]);
     }
 
@@ -161,23 +157,5 @@ class CompanyController extends AbstractController
         $this->em->flush();
 
         return $this->redirectToRoute('show_companys');
-    }
-
-    /**
-     * @Route("/search", name="company_search", methods={"GET","POST"})
-     * @param Request $request
-     * @param CompanyRepository $companyRepository
-     * @param PaginatorInterface $paginator
-     * @return Response
-     */
-    public function searchAction(Request $request, CompanyRepository $companyRepository, PaginatorInterface $paginator): Response
-    {
-        $query = $request->request->get('query');
-
-        $companyQuery = $companyRepository->findCompanys($query);
-
-        $companys = $paginator->paginate($companyQuery, $request->query->getInt('page', 1), 10);
-
-        return $this->render('company/index_results.html.twig', ['companys' => $companys]);
     }
 }

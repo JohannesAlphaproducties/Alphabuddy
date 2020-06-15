@@ -64,7 +64,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/flex" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
-      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/symfony/cache-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
@@ -142,12 +141,15 @@
       <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/sendgrid-mailer" />
       <path value="$PROJECT_DIR$/vendor/kardasz/swiftmailer-transport-sendgrid" />
-      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/starkbank/ecdsa" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/profiler-pack" />
-      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XLRbeAygd3btjDNUXzklsn3amH" />
@@ -268,7 +270,7 @@
       <workItem from="1588329798691" duration="9802000" />
       <workItem from="1591598147920" duration="239000" />
       <workItem from="1591598501709" duration="1223000" />
-      <workItem from="1592213482331" duration="4957000" />
+      <workItem from="1592213482331" duration="10076000" />
     </task>
     <servers />
   </component>
@@ -321,10 +323,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1458" height="1022" key="dock-window-5/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1583738740190" />
-    <state x="618" y="94" width="684" height="852" key="find.popup" timestamp="1592223331153">
+    <state x="618" y="94" width="684" height="852" key="find.popup" timestamp="1592225096839">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592223331153" />
+    <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592225096839" />
     <state x="2533" y="106" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592218070955" />
     <state x="753" y="152" width="684" height="852" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585556118001" />
     <state x="2712" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1587040734920">

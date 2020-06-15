@@ -163,20 +163,6 @@ class WorkOrdersController extends AbstractController
     }
 
     /**
-     * @Route("/search", name="workOrder_search", methods={"POST"})
-     */
-    public function searchAction(Request $request, WorkOrdersRepository $workOrdersRepository, PaginatorInterface $paginator): Response
-    {
-        $query = $request->request->get('query');
-
-        $workOrderQuery = $workOrdersRepository->findWorkOrder($query);
-
-        $workOrders = $paginator->paginate($workOrderQuery, $request->query->getInt('page', 1), 10);
-
-        return $this->render('work_orders/index_results.html.twig', ['work_orders' => $workOrders]);
-    }
-
-    /**
      * @Route("/sign/{id}", name="sign_workOrder", methods={"GET"})
      */
     public function signWorkOrder($id, WorkOrdersRepository $workOrdersRepository)

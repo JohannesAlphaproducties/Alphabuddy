@@ -78,6 +78,9 @@
     "doctrine/reflection": {
         "version": "v1.1.0"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.0"
+    },
     "dompdf/dompdf": {
         "version": "v0.8.4"
     },
@@ -86,9 +89,6 @@
     },
     "gedmo/doctrine-extensions": {
         "version": "v2.4.39"
-    },
-    "jdorn/sql-formatter": {
-        "version": "v1.2.17"
     },
     "kardasz/swiftmailer-transport-sendgrid": {
         "version": "1.0.2"
@@ -197,6 +197,9 @@
     },
     "setasign/fpdi": {
         "version": "v2.2.0"
+    },
+    "starkbank/ecdsa": {
+        "version": "0.0.4"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.3"
@@ -409,6 +412,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.13.1"
+    },
+    "symfony/polyfill-php80": {
+        "version": "v1.17.0"
     },
     "symfony/process": {
         "version": "v5.0.4"

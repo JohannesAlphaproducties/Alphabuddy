@@ -13,7 +13,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for company in all %}
+            {% for company in companys %}
                 <tr>
                     <td><a>{{ company.tlId }}</a></td>
                     <td><a href="{{ path('showOne_company', {'id':  company.id } ) }}">{{ company.name }}</a></td>
@@ -43,8 +43,5 @@
         </table>
     </div>
 </div>
-{#<div class="card-footer">#}
-{#        {{ knp_pagination_render(companys) }}#}
-{#</div>#}
 
 

@@ -19,21 +19,6 @@ class WorkOrdersRepository extends ServiceEntityRepository
         parent::__construct($registry, WorkOrders::class);
     }
 
-    public function findWorkOrder($searchString)
-    {
-        return $this->createQueryBuilder('q')
-            ->leftJoin('q.company', 'c')
-            ->leftJoin('q.mechanic', 'm')
-            ->Where('q.titel LIKE :name')
-            ->orWhere('q.status LIKE :name')
-            ->orWhere('q.time LIKE :name')
-            ->orWhere('c.name LIKE :name')
-            ->orWhere('m.name LIKE :name')
-            ->setParameter('name', '%'.$searchString.'%')
-            ->getQuery()
-            ->getResult();
-    }
-
     public function findOpenWorkOrders()
     {
         return $this->createQueryBuilder('workOrder')
