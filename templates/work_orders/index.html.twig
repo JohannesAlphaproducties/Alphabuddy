@@ -36,30 +36,5 @@
             });
         } );
 
-        $(document).ready(function(){
-            $("#search").on('keyup', function(e) { // everytime keyup event
-                e.preventDefault();
-                var input = $(this).val();// We take the input value
-                $.ajax({
-                    type: "POST",
-                    data: {
-                        query: input
-                    },
-                    url: "{{ path('workOrder_search') }}",
-                    dataType: "html",
-                    cache: false,
-                    success: function (response) {
-                        $('.ajaxContent').empty();
-                        $('.ajaxContent').append(response);
-
-                    },
-                    error: function (response) {
-                        console.log(response);
-                    }
-                });
-
-            });
-        });
-
     </script>
 {% endblock %}
