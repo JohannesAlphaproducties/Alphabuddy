@@ -19,20 +19,6 @@ class TicketRepository extends ServiceEntityRepository
         parent::__construct($registry, Ticket::class);
     }
 
-    public function findTickets($searchString)
-    {
-        return $this->createQueryBuilder('ticket')
-            ->leftJoin('ticket.company', 'c')
-            ->leftJoin('ticket.responsible', 'r')
-            ->Where('ticket.status LIKE :name')
-            ->orWhere('ticket.description LIKE :name')
-            ->orWhere('c.name LIKE :name')
-            ->orWhere('r.name LIKE :name')
-            ->setParameter('name', '%'.$searchString.'%')
-            ->getQuery()
-            ->getResult();
-    }
-
     public function findOpenTickets()
     {
         return $this->createQueryBuilder('ticket')

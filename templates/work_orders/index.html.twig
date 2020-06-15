@@ -9,7 +9,6 @@
                 <div class="card h-100">
                     <div class="card-header font-weight-bold">
                         <div class="card-title">Werkbonnen</div>
-                        <input type="text" id="search" class="form-control col-lg-3 ml-auto" placeholder="Zoeken">
                     </div>
                     <div class="ajaxContent">
                         {{ include('work_orders/index_results.html.twig') }}
@@ -21,10 +20,19 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#datatable').DataTable({
-                paging: false,
-                "info" : false,
-                "searching": false,
+            $('#datatable').DataTable( {
+                "order" : [[ 1, "asc" ]],
+                "language": {
+                    "lengthMenu" : "Laat _MENU_ werkbonnen per pagina zien",
+                    "info" : "Pagina _PAGE_ van de _PAGES_",
+                    "search" : "zoeken:",
+                    "paginate" : {
+                        "first" : "Eerste",
+                        "last" : "Laatste",
+                        "next" : "Volgende",
+                        "previous" : "Vorige",
+                    },
+                }
             });
         } );
 

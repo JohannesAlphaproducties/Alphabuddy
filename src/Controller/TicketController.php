@@ -204,20 +204,6 @@ class TicketController extends AbstractController
     }
 
     /**
-     * @Route("/search", name="ticket_search", methods={"POST"})
-     */
-    public function searchAction(Request $request, TicketRepository $ticketRepository, PaginatorInterface $paginator): Response
-    {
-        $query = $request->request->get('query');
-
-        $ticketQuery = $ticketRepository->findTickets($query);
-
-        $tickets = $paginator->paginate($ticketQuery, $request->query->getInt('page', 1), 10);
-
-        return $this->render('ticket/index_results.html.twig', ['tickets' => $tickets]);
-    }
-
-    /**
      * @Route("/json/tickets", name="json_tickets")
      */
     public function jsonTickets()

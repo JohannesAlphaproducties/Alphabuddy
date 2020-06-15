@@ -259,6 +259,7 @@ class WorkOrdersController extends AbstractController
             //create new
             file_put_contents('../data/workorders/' . $filename . '.pdf', $output);
         } else {
+            //create file
             file_put_contents('../data/workorders/' . $filename . '.pdf', $output);
         }
 
@@ -276,7 +277,6 @@ class WorkOrdersController extends AbstractController
             $mailer->send($message);
         }
 
-
         //send workOrder to company
         if ($check == true) {
             //fill email company
@@ -284,7 +284,7 @@ class WorkOrdersController extends AbstractController
                 ->subject('Werkbon ' . $workOrder->getTitel() . ' ' . $workOrder->getCompany()->getName() . ' ' . $name)
                 ->from('johannes.vlot@alphaproducties.nl')
                 ->to($emailCompany)
-                ->text('Dit is de email voor de klant')
+                ->text('.')
                 ->attachFromPath('../data/workorders/' . $id . '.pdf')
                 ;
             $mailer->send($messageCompany);

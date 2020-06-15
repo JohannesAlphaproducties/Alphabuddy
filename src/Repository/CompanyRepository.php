@@ -46,19 +46,6 @@ class CompanyRepository extends ServiceEntityRepository
 //            ->getResult();
 //    }
 
-    public function findCompanys($searchString)
-    {
-        return $this->createQueryBuilder('q')
-            ->Where('q.name LIKE :name')
-            ->orWhere('q.billing_town LIKE :name')
-            ->orWhere('q.email LIKE :name')
-            ->orWhere('q.billing_address LIKE :name')
-            ->orWhere('q.billing_zip LIKE :name')
-            ->setParameter('name', '%'.$searchString.'%')
-            ->getQuery()
-            ->getResult();
-    }
-
     public function findAllCompanies()
     {
         return $this->createQueryBuilder('q')
