@@ -159,7 +159,9 @@ class WorkOrdersController extends AbstractController
         //render pdf
         $domPdf->render();
         //download pdf to browser with the right name
-       $domPdf->stream('Werkbon'.$workOrder->getId()."-".$workOrder->getTitel().".pdf");
+       $domPdf->stream('Werkbon'.$workOrder->getId()."-".$workOrder->getTitel().".pdf", [
+           'Attachment' => true
+       ]);
 
        return $this->redirectToRoute('work_orders_show', [
            'id' => $workOrder->getId(),
