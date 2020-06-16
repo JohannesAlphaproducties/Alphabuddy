@@ -8,7 +8,6 @@ use App\Entity\WorkOrders;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -94,7 +93,7 @@ class CompanyController extends AbstractController
     /**
      * @Route("/", name="show_companys")
      */
-    public function showCompanys(Request $request, PaginatorInterface $paginator)
+    public function showCompanys(Request $request)
     {
         $results = $this->getDoctrine()->getRepository(Company::class)->findAllCompanies();
 
