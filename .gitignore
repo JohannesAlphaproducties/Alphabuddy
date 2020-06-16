@@ -11,6 +11,7 @@
 /src/Controller/WorkOrdersController.php
 /src/Controller/TicketController.php
 /data
+/templates/pdf/pdf.html.twig
 ###< symfony/framework-bundle ###
 sendgrid.env
 "sendgrid.env" 
