@@ -10,15 +10,15 @@
                     <div class="card-body">
                         <form action="{{ path('save_sign', {'id' : id }) }}" method="post" id="signForm">
                             <input type="text" placeholder="Getekend door:" class="form-control mb-4" name="signedBy">
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="check" value="option1" id="check" checked>
-                                <span class="custom-control-label">Werkbon versturen naar klant</span>
-                            </label>
-                            {% if companyEmail is empty %}
-                                <input type="text" class="form-control mb-3" placeholder="Email Bedrijf" name="emailCompany">
-                                {% else %}
-                                    <input type="text" class="form-control mb-3" value="{{ companyEmail }}" name="emailCompany">
-                            {% endif %}
+{#                            <label class="custom-control custom-checkbox">#}
+{#                                <input type="checkbox" class="custom-control-input" name="check" value="option1" id="checked" checked>#}
+{#                                <span class="custom-control-label">Werkbon versturen naar klant</span>#}
+{#                            </label>#}
+{#                            {% if companyEmail is empty %}#}
+{#                                <input type="text" class="form-control mb-3" placeholder="Email Bedrijf" name="emailCompany">#}
+{#                                {% else %}#}
+{#                                    <input type="text" class="form-control mb-3" value="{{ companyEmail }}" name="emailCompany">#}
+{#                            {% endif %}#}
                             <div id="signature-pad" class="signature-pad">
                                 <div class="signature-pad--body">
                                     <canvas class="border"></canvas>

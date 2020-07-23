@@ -321,17 +321,17 @@ class WorkOrdersController extends AbstractController
         }
 
         //send workOrder to company
-        if ($check == true) {
-            //fill email company
-            $messageCompany = (new Email())
-                ->subject('Werkbon ' . $workOrder->getTitel() . ' ' . $workOrder->getCompany()->getName() . ' ' . $name)
-                ->from('johannes.vlot@alphaproducties.nl')
-                ->to($emailCompany)
-                ->text('.')
-                ->attachFromPath('../data/workorders/' . $id . '.pdf')
-                ;
-            $mailer->send($messageCompany);
-        }
+//        if ($check == true) {
+//            //fill email company
+//            $messageCompany = (new Email())
+//                ->subject('Werkbon ' . $workOrder->getTitel() . ' ' . $workOrder->getCompany()->getName() . ' ' . $name)
+//                ->from('johannes.vlot@alphaproducties.nl')
+//                ->to($emailCompany)
+//                ->text('.')
+//                ->attachFromPath('../data/workorders/' . $id . '.pdf')
+//                ;
+//            $mailer->send($messageCompany);
+//        }
         return $this->redirectToRoute('work_orders_show', [
             'id' => $workOrder->getId(),
         ]);
