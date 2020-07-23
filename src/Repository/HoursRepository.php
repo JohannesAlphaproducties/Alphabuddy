@@ -31,12 +31,11 @@ class HoursRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-    public function findPersonalHoursWeek($user, $monday, $friday)
+    public function findUserHours($user, $monday, $friday)
     {
         return $this->createQueryBuilder('q')
             ->where('q.user = :user')
-            ->select('q.hours')
-            ->where('q.date BETWEEN :monday AND :friday')
+            ->andWhere('q.date BETWEEN :monday AND :friday')
             ->setParameter('user', $user)
             ->setParameter('monday', $monday)
             ->setParameter('friday', $friday)

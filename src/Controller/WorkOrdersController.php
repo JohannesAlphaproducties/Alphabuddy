@@ -320,7 +320,7 @@ class WorkOrdersController extends AbstractController
             $mailer->send($message);
         }
 
-        //send workOrder to company
+        //send workOrder to company //pdf nog niet op orde voor het gebruiken van deze funcite dna moet er eerst een achtergrond op kunnen enzo.
 //        if ($check == true) {
 //            //fill email company
 //            $messageCompany = (new Email())

@@ -24,7 +24,14 @@ class HoursController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $results = $this->getDoctrine()->getRepository(Hours::class)->findAll();
+        //get monday's date and friday's date
+        $monday = date( 'Y-m-d', strtotime( 'monday this week' ) );
+        $friday = date( 'Y-m-d', strtotime( 'saturday this week' ) );
+
+        //get user
+        $user = $this->getUser();
+
+        $results = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $monday, $friday);
 
         $hours = $paginator->paginate($results, $request->query->getInt('page', 1), 10);
 
@@ -64,7 +71,7 @@ class HoursController extends AbstractController
         $friday = date( 'Y-m-d', strtotime( 'saturday this week' ) );
 
         //get user
-        $user = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $user = $this->getUser();
 
         //get hours and execute query
         $hours = $this->getDoctrine()->getRepository(Hours::class)->findPersonalHours($user, $monday, $friday);

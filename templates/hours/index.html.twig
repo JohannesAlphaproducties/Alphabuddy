@@ -27,7 +27,6 @@
                             </thead>
                             <tbody>
                             {% for hour in hours %}
-                                {% if hour.user == app.user %}
                                 {% if hour.date > date('monday this week')%}
                                     <tr>
                                         <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
@@ -36,7 +35,6 @@
                                         <td>{{ hour.description }}</td>
                                         <td>{{ include('hours/_delete_form.html.twig') }}</td>
                                     </tr>
-                                {% endif %}
                                 {% endif %}
                             {% else %}
                                 <p>Geen Uren geregistreerd</p>

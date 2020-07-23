@@ -1,5 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+    {% if app.user.contract > 0 %}
+        {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } ))  >  app.user.contract  %}
+            <div class="alert alert-danger" role="alert">
+                Je bent deze week {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } )) - app.user.contract }} uur over je uren heen!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+    {% endif %}
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
