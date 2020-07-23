@@ -23,6 +23,9 @@
                             <th>Bericht</th>
                             <th>Monteur(s)</th>
                             <th>Afgetekend</th>
+                            {% if work_order.filename %}
+                                <th>Pdf</th>
+                            {% endif %}
                         </tr>
                         <tr>
                             <td>{{ work_order.id }}</td>
@@ -41,6 +44,9 @@
                                 {% else %}
                                     <i class="fas fa-minus"></i>
                                 {% endif %}</td>
+                            {% if work_order.filename %}
+                                <td><a href="{{ asset('data/image_workorder/' ~ work_order.Filename) }}">pdf</a></td>
+                            {% endif %}
                         </tr>
                         </thead>
                     </table>
@@ -55,6 +61,7 @@
 {#                                <a href="{{ path('download_pdf', {'id': work_order.id}) }}" class="dropdown-item">Download pdf</a>#}
                                 {% if is_granted("ROLE_ADMIN") %}
                                     <a href="{{ path('sign_workOrder', {'id': work_order.id }) }}" class="dropdown-item">Aftekenen</a>
+                                    <a href="{{ asset('data/image_workorder/' ~ work_order.Filename) }}" class="dropdown-item">Foto's</a>
                                 {% endif %}
                             </div>
                         </div>

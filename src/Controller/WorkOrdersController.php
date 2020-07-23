@@ -12,6 +12,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -19,6 +20,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/work/orders")
@@ -53,13 +55,33 @@ class WorkOrdersController extends AbstractController
      * @Route("/new", name="work_orders_new", methods={"GET","POST"})
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function new(Request $request, MailerInterface $mailer): Response
+    public function new(Request $request, MailerInterface $mailer, SluggerInterface $slugger): Response
     {
         $workOrder = new WorkOrders();
         $form = $this->createForm(WorkOrdersType::class, $workOrder);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+
+                try {
+                    $image->move(
+                        $this->getParameter('image_map'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    echo 'error';
+                }
+
+                $workOrder->setFilename($newFilename);
+            }
+
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($workOrder);
@@ -104,12 +126,32 @@ class WorkOrdersController extends AbstractController
     /**
      * @Route("/{id}/edit", name="work_orders_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, WorkOrders $workOrder): Response
+    public function edit(Request $request, WorkOrders $workOrder, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(WorkOrdersType::class, $workOrder);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+
+                try {
+                    $image->move(
+                        $this->getParameter('image_map'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    echo 'error';
+                }
+
+                $workOrder->setFilename($newFilename);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('work_orders_index');
