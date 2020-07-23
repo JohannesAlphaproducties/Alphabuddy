@@ -42,7 +42,7 @@ class ArchiveController extends AbstractController
         $results2 = $this->getDoctrine()->getRepository(WorkOrders::class)->findReadyWorkOrders();
 
         $closedWorkOrders = $paginator->paginate($results, $request->query->getInt('page', 1),10);
-        $readyWorkOrders = $paginator->paginate($results2, $request->query->getInt('page', 1),10);
+        $readyWorkOrders = $paginator->paginate($results2, $request->query->getInt('page2', 1),10);
 
         return $this->render('archive/workOrder.html.twig', [
             'workOrdersClosed' => $closedWorkOrders,
