@@ -3,12 +3,84 @@
 {% block title %}Archief werkbonnen{% endblock %}
 
 {% block body %}
+
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Werkbonnen aftekenen</div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Bedrijf</th>
+                            <th>Titel</th>
+                            <th>Status</th>
+                            <th>Datum</th>
+                            <th>Descriptie</th>
+                            <th>Prioritijd</th>
+                            <th>Gewerkte uren</th>
+                            <th>Monteur(s)</th>
+                            <th>Afgetekend</th>
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <th>actie's</th>
+                            {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for workOrder in workOrdersReady %}
+                            <tr>
+                                <td>{{ workOrder.id }}</td>
+                                <td>{{ workOrder.company }}</td>
+                                <td><a href="{{ path('work_orders_show', {'id': workOrder.id }) }}">{{ workOrder.titel }}</a></td>
+                                <td>{{ workOrder.status }}</td>
+                                <td>{{ workOrder.time ? workOrder.time|date('Y-m-d') : '' }}</td>
+                                <td>{{ workOrder.comment|length > 15 ? workOrder.comment|slice(0, 15) ~ '...' : workOrder.comment }}</td>
+                                <td>{{ workOrder.priority }}</td>
+                                <td>{{ render(controller('App\\Controller\\HoursController::getTotalHours', { 'id': workOrder.id } )) }}</td>
+                                <td>{% for mechanic in workOrder.mechanic %}
+                                        {{ mechanic.name|length > 13 ? mechanic.name|slice(0, 13) ~ '...' : mechanic.name }}
+                                    {% endfor %}</td>
+                                <td>
+                                    {% if workOrder.signedBy is not null %}
+                                        <i class="fa fa-check"></i>
+                                    {% else %}
+                                        <i class="fas fa-minus"></i>
+                                    {% endif %}
+                                </td>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <td>
+                                        <a href="{{ path('sign_workOrder', {'id' : workOrder.id }) }}" class="btn-green btn-sm ">Aftekenen</a>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td>Geen resultaten</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                {{ knp_pagination_render(workOrdersReady) }}
+            </div>
+        </div>
+    {% endif %}
+
+
+
     <div class="card">
         <div class="card-header">
             <div class="card-title">Archief werkbonnen</div>
-            <div class="card-options">
-                <a href="{{ path('empty_work_orders_archive') }}" class="btn btn-red btn-sm">Archief legen</a>
-            </div>
+            {% if is_granted("ROLE_ADMIN") %}
+                <div class="card-options">
+                    <a href="{{ path('empty_work_orders_archive') }}" class="btn btn-red btn-sm">Archief legen</a>
+                </div>
+            {% endif %}
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,11 +97,13 @@
                         <th>Gewerkte uren</th>
                         <th>Monteur(s)</th>
                         <th>Afgetekend</th>
-                        <th>actie's</th>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <th>actie's</th>
+                        {% endif %}
                     </tr>
                     </thead>
                     <tbody>
-                    {% for workOrder in workOrders %}
+                    {% for workOrder in workOrdersClosed %}
                         <tr>
                             <td>{{ workOrder.id }}</td>
                             <td>{{ workOrder.company }}</td>
@@ -49,9 +123,11 @@
                                     <i class="fas fa-minus"></i>
                                 {% endif %}
                             </td>
-                            <td>
-                                <a href="{{ path('work_orders_delete', {'id': workOrder.id }) }}" class="btn-red btn-sm ">Delete</a>
-                            </td>
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <td>
+                                    <a href="{{ path('work_orders_delete', {'id' : workOrder.id }) }}" class="btn-red btn-sm ">Verwijderen</a>
+                                </td>
+                            {% endif %}
                         </tr>
                     {% else %}
                         <tr>
@@ -63,7 +139,7 @@
             </div>
         </div>
         <div class="card-footer">
-            {{ knp_pagination_render(workOrders) }}
+            {{ knp_pagination_render(workOrdersClosed) }}
         </div>
     </div>
 {% endblock %}

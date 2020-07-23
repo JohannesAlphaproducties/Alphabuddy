@@ -37,7 +37,7 @@ class WorkOrdersType extends AbstractType
                     'wachten op externe monteur' => 'wachten op externe monteur',
                     'wachten op backorder' => 'wachten op backorder',
                     'opnieuw inplannen' => 'opnieuw inplannen',
-                    'afgesloten' => 'afgesloten'
+                    'klaar voor ondertekenen' => 'klaar voor ondertekenen'
                 ],
             ])
             ->add('time', DateTimeType::class, [

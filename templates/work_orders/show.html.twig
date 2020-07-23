@@ -53,7 +53,9 @@
                                 {{ include('work_orders/_delete_form.html.twig') }}
                                 {# Pdf downloaden werkt in de online versie niet. #}
 {#                                <a href="{{ path('download_pdf', {'id': work_order.id}) }}" class="dropdown-item">Download pdf</a>#}
-                                <a href="{{ path('sign_workOrder', {'id': work_order.id }) }}" class="dropdown-item">Aftekenen</a>
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <a href="{{ path('sign_workOrder', {'id': work_order.id }) }}" class="dropdown-item">Aftekenen</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

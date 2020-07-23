@@ -36,6 +36,14 @@ class WorkOrdersRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findReadyWorkOrders()
+    {
+        return $this->createQueryBuilder('workOrder')
+            ->where("workOrder.status = 'klaar voor ondertekenen'")
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findWorkOrdersCompany($id)
     {
         return $this->createQueryBuilder('workOrder')

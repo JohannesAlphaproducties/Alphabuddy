@@ -18,6 +18,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/work/orders")
@@ -26,10 +27,13 @@ class WorkOrdersController extends AbstractController
 {
     private $em;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, Security $security)
     {
         $this->em = $em;
+        $this->security = $security;
     }
+
+    private $security;
 
     /**
      * @Route("/", name="work_orders_index", methods={"GET"})
@@ -173,13 +177,18 @@ class WorkOrdersController extends AbstractController
      */
     public function signWorkOrder($id, WorkOrdersRepository $workOrdersRepository)
     {
-        $workOrder = $workOrdersRepository->find($id);
-        $companyEmail = $workOrder->getCompany()->getEmail();
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            $workOrder = $workOrdersRepository->find($id);
+            $companyEmail = $workOrder->getCompany()->getEmail();
 
-        return $this->render('work_orders/sign.html.twig', [
-            'id' => $id,
-            'companyEmail' => $companyEmail,
-        ]);
+
+            return $this->render('work_orders/sign.html.twig', [
+                'id' => $id,
+                'companyEmail' => $companyEmail,
+            ]);
+        } else {
+            return $this->redirectToRoute('home');
+        }
     }
 
     /**
