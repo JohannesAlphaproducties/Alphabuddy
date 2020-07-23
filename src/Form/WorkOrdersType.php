@@ -83,6 +83,10 @@ class WorkOrdersType extends AbstractType
             ])
 
             ->add('image', FileType::class, [
+                'attr' => [
+                    'class' => 'form-control-file',
+                ],
+                'label' => 'Pdf',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -91,7 +95,7 @@ class WorkOrdersType extends AbstractType
                         'mimeTypes' => [
                             'application/pdf',
                         ],
-                        'mimeTypesMessage' => 'Png of Jpg',
+                        'mimeTypesMessage' => 'fout',
                     ])
                 ],
             ])
