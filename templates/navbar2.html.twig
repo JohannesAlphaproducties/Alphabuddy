@@ -18,13 +18,13 @@
                             <a href="{{ path('profile') }}" class="dropdown-item">
                                 <i class="dropdown-icon fas fa-cogs"></i> Instellingen
                             </a>
-                            <a class="dropdown-item" href="{{ path('app_logout') }}">
-                                <i class="dropdown-icon fa fa-sign-out-alt"></i> Uitloggen
-                            </a>
                             {% if is_granted('ROLE_ADMIN') %}
                                 <a href="{{ path('user_index') }}" class="dropdown-item">
                                     <i class="dropdown-icon fa fa-users"></i> Gebruikers</a>
                             {% endif %}
+                            <a class="dropdown-item" href="{{ path('app_logout') }}">
+                                <i class="dropdown-icon fa fa-sign-out-alt"></i> Uitloggen
+                            </a>
                         </div>
                     </div>
                 {% endif %}

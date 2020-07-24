@@ -219,18 +219,13 @@ class WorkOrdersController extends AbstractController
      */
     public function signWorkOrder($id, WorkOrdersRepository $workOrdersRepository)
     {
-        if ($this->security->isGranted('ROLE_ADMIN')) {
             $workOrder = $workOrdersRepository->find($id);
             $companyEmail = $workOrder->getCompany()->getEmail();
-
 
             return $this->render('work_orders/sign.html.twig', [
                 'id' => $id,
                 'companyEmail' => $companyEmail,
             ]);
-        } else {
-            return $this->redirectToRoute('home');
-        }
     }
 
     /**

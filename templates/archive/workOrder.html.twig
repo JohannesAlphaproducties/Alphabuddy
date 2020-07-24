@@ -4,7 +4,6 @@
 
 {% block body %}
 
-    {% if is_granted("ROLE_ADMIN") %}
         <div class="card">
             <div class="card-header">
                 <div class="card-title">Werkbonnen aftekenen</div>
@@ -50,11 +49,9 @@
                                         <i class="fas fa-minus"></i>
                                     {% endif %}
                                 </td>
-                                {% if is_granted("ROLE_ADMIN") %}
                                     <td>
                                         <a href="{{ path('sign_workOrder', {'id' : workOrder.id }) }}" class="btn-green btn-sm ">Aftekenen</a>
                                     </td>
-                                {% endif %}
                             </tr>
                         {% else %}
                             <tr>
@@ -69,7 +66,6 @@
                 {{ knp_pagination_render(workOrdersReady) }}
             </div>
         </div>
-    {% endif %}
 
 
 
