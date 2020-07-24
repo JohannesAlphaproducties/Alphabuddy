@@ -55,7 +55,7 @@ class UserPageController extends AbstractController
 
                 $this->em->flush();
             } else {
-                echo "you are not allowed to delete this item";
+                echo "you are not allowed to delete a user";
             }
         }
         return $this->redirectToRoute('user_index');

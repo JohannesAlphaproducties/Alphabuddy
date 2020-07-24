@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\File;
 
 class WorkOrdersType extends AbstractType
@@ -88,17 +89,24 @@ class WorkOrdersType extends AbstractType
                 ],
                 'label' => 'Pdf',
                 'mapped' => false,
+//                'multiple' => true,
                 'required' => false,
-                'constraints' => [
-                    new File([
-                        'maxSize' => '10000k',
-                        'mimeTypes' => [
-                            'application/pdf',
-                        ],
-                        'mimeTypesMessage' => 'fout',
+//                'constraints' => [
+//                    new All([
+                        'constraints' => [
+                            new File([
+                                'maxSize' => '10000k',
+                                'mimeTypes' => [
+                                    'application/pdf',
+                                    'image/png',
+                                    'image/jpeg'
+                                ],
+                                'mimeTypesMessage' => 'fout',
+                            ])
+                        ]
                     ])
-                ],
-            ])
+//                ]
+//            ])
         ;
     }
 

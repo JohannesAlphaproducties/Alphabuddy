@@ -276,7 +276,9 @@
       <workItem from="1595485638160" duration="264000" />
       <workItem from="1595485905770" duration="13179000" />
       <workItem from="1595505787459" duration="3618000" />
-      <workItem from="1595571905284" duration="239000" />
+      <workItem from="1595571905284" duration="631000" />
+      <workItem from="1595583165705" duration="3848000" />
+      <workItem from="1595593302431" duration="5303000" />
     </task>
     <servers />
   </component>
@@ -305,6 +307,10 @@
     </state>
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595485902385" />
     <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588076562215" />
+    <state x="2717" y="157" key="RollbackChangesDialog" timestamp="1595587560651">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2717" y="157" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595587560651" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1587481646615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

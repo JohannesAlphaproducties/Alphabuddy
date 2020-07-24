@@ -70,17 +70,16 @@ class WorkOrdersController extends AbstractController
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
 
-                try {
-                    $image->move(
-                        $this->getParameter('image_map'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    echo 'error';
-                }
-
+                $image->move(
+                    $this->getParameter('image_path'),
+                    $newFilename
+                );
                 $workOrder->setFilename($newFilename);
+
             }
+
+            $this->getDoctrine()->getManager()->flush();
+
 
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -140,21 +139,18 @@ class WorkOrdersController extends AbstractController
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
 
-                try {
-                    $image->move(
-                        $this->getParameter('image_map'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    echo 'error';
-                }
-
+                $image->move(
+                    $this->getParameter('image_path'),
+                    $newFilename
+                );
                 $workOrder->setFilename($newFilename);
             }
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('work_orders_index');
+            return $this->redirectToRoute('work_orders_show', [
+                'id' => $workOrder->getId(),
+            ]);
         }
 
         return $this->render('work_orders/edit.html.twig', [
