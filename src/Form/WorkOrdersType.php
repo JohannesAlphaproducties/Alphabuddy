@@ -87,7 +87,7 @@ class WorkOrdersType extends AbstractType
                 'attr' => [
                     'class' => 'form-control-file',
                 ],
-                'label' => 'Pdf',
+                'label' => 'Pdf, png, jpg of jpeg',
                 'mapped' => false,
 //                'multiple' => true,
                 'required' => false,
@@ -95,7 +95,7 @@ class WorkOrdersType extends AbstractType
 //                    new All([
                         'constraints' => [
                             new File([
-                                'maxSize' => '10000k',
+                                'maxSize' => '15000k',
                                 'mimeTypes' => [
                                     'application/pdf',
                                     'image/png',
