@@ -3,12 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Hours;
-use App\Entity\User;
 use App\Form\HoursType;
-use App\Repository\HoursRepository;
-use App\Repository\UserRepository;
 use App\Repository\WorkOrdersRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +19,9 @@ class HoursController extends AbstractController
 {
     /**
      * @Route("/", name="hours_index", methods={"GET"})
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
@@ -42,6 +43,9 @@ class HoursController extends AbstractController
 
     /**
      * @Route("/total/{id}", name="total_hours", methods={"GET", "POST"})
+     * @param $id
+     * @param WorkOrdersRepository $workOrdersRepository
+     * @return Response
      */
     public function getTotalHours($id, WorkOrdersRepository $workOrdersRepository)
     {
@@ -92,6 +96,8 @@ class HoursController extends AbstractController
 
     /**
      * @Route("/new", name="hours_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -119,6 +125,8 @@ class HoursController extends AbstractController
 
     /**
      * @Route("/{id}", name="hours_show", methods={"GET"})
+     * @param Hours $hour
+     * @return Response
      */
     public function show(Hours $hour): Response
     {
@@ -153,6 +161,9 @@ class HoursController extends AbstractController
 
     /**
      * @Route("/{id}", name="hours_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Hours $hour
+     * @return Response
      */
     public function delete(Request $request, Hours $hour): Response
     {

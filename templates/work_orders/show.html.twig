@@ -104,7 +104,7 @@
                                                 <td>
                                                 {% if app.user ==  hour.user %}
                                                         <a href="{{ path('hours_delete', {'id': hour.id }) }}" class="btn-red btn-sm">Delete</a>
-                                                    <a href="{{ path('hours_edit', {'id': hour.id}) }}" class="btn-primary btn-sm">Edit</a>
+                                                    <a href="{{ path('hours_edit', { 'id' : hour.id }) }}" class="btn-primary btn-sm">Edit</a>
                                                 {% endif %}
                                                 </td>
                                             </tr>

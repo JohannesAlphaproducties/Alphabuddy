@@ -279,6 +279,8 @@
       <workItem from="1595571905284" duration="631000" />
       <workItem from="1595583165705" duration="3848000" />
       <workItem from="1595593302431" duration="7788000" />
+      <workItem from="1595941116797" duration="77000" />
+      <workItem from="1595947189433" duration="3830000" />
     </task>
     <servers />
   </component>
@@ -286,14 +288,6 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2080" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1587039462082">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2080" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587039462082" />
-    <state x="2610" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587047177191">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2610" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587047177191" />
     <state x="254" y="279" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587724802107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -302,10 +296,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2643" y="430" key="ComposerInitDialogKey/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587477233649" />
-    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1595485902385">
+    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1595941192497">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595485902385" />
+    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595941192497" />
     <state x="2783" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588076562215" />
     <state x="2717" y="157" key="RollbackChangesDialog" timestamp="1595587560651">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -315,7 +309,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587481646615" />
-    <state x="2381" y="163" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587039471385" />
+    <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596005397702">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596005397702" />
     <state x="2017" y="-19" width="1511" height="955" maximized="true" key="dock-window-1" timestamp="1588341710683">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -329,6 +326,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="792" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595492271035" />
-    <state x="2712" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587040734920" />
   </component>
 </project>

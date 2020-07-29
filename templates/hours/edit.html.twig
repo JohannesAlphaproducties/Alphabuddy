@@ -13,7 +13,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-12">
-                                {{ include('hours/_form.html.twig') }}
+                                <h4 class="text-red">Let op dat de goede werkbon geselecteerd staat! (werkt tijdelijk niet)</h4>
+                                {{ include('hours/_form.html.twig', {'id': id}) }}
                                 {{ include('hours/_delete_form.html.twig') }}
                                 <a href="{{ path('hours_index') }}" class="dropdown-item text-primary">Terug</a>
                         </div>
