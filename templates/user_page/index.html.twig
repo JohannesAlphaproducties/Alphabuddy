@@ -70,17 +70,10 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                         {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': user.id } ))  >  user.contract  %}
-                        <div class="card-title text-red">
-                            {{ user.name }}
-                            ({{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': user.id } )) }} / {{ user.contract }})
+                        <div class="card-title">{{ user.name }}</div>
+                        <div class="card-options">
+                            <p class="text-muted m-0 card-options">{{ "monday this week"|date("m/d/Y") }} - {{ "saturday this week"|date("m/d/Y") }}</p>
                         </div>
-                            {% else %}
-                                <div class="card-title">
-                                    {{ user.name }}
-                                    ({{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': user.id } )) }} / {{ user.contract }})
-                                </div>
-                            {% endif %}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
