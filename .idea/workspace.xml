@@ -150,6 +150,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/profiler-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XLRbeAygd3btjDNUXzklsn3amH" />
@@ -282,7 +283,7 @@
       <workItem from="1595941116797" duration="77000" />
       <workItem from="1595947189433" duration="4429000" />
       <workItem from="1596191566953" duration="1430000" />
-      <workItem from="1599655475138" duration="165000" />
+      <workItem from="1599655475138" duration="881000" />
     </task>
     <servers />
   </component>
