@@ -35,6 +35,12 @@
     {% block navbar %}
         {% include 'navbar2.html.twig' %}
     {% endblock %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <div class="container">
     {% block body %}
         {% include 'home/index.html.twig' %}

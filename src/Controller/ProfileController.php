@@ -125,6 +125,8 @@ class ProfileController extends AbstractController
         $this->getUser()->setPassword($new_pass_encoded);
         $this->em->flush();
 
+        $this->addFlash('success', 'Wachtwoord veranderd.');
+
         return $this->redirectToRoute('profile');
     }
 
