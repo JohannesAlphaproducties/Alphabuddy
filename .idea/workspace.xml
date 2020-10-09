@@ -164,8 +164,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="LogHighlighting" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CRM" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -285,7 +286,13 @@
       <workItem from="1596191566953" duration="1430000" />
       <workItem from="1599655475138" duration="3603000" />
       <workItem from="1599820037221" duration="7115000" />
-      <workItem from="1600244222184" duration="173000" />
+      <workItem from="1600244222184" duration="2247000" />
+      <workItem from="1600264486807" duration="602000" />
+      <workItem from="1600780317255" duration="2544000" />
+      <workItem from="1601028355313" duration="1280000" />
+      <workItem from="1601631932807" duration="12000" />
+      <workItem from="1601641013578" duration="1426000" />
+      <workItem from="1601968320967" duration="184000" />
     </task>
     <servers />
   </component>
@@ -293,23 +300,22 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1595941192497">
+    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1601968503765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1595941192497" />
+    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601968503765" />
     <state x="2717" y="157" key="RollbackChangesDialog" timestamp="1595587560651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2717" y="157" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595587560651" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1601030216749">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601030216749" />
     <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596005397702">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596005397702" />
-    <state x="618" y="94" width="684" height="852" key="find.popup" timestamp="1592301750741">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="618" y="94" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1592301750741" />
-    <state x="2533" y="106" width="684" height="852" key="find.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1592218070955" />
     <state x="792" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1599821389409">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

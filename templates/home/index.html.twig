@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <a href="{{ path('profile') }}" class="text-xs font-weight-bold text-primary text-uppercase mb-1">Totaal persoonlijke uren</a>
+                                        <a href="{{ path('profile') }}" class="text-xs font-weight-bold text-primary text-uppercase mb-1">Totaal persoonlijke uren.</a>
                                             {% if  render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } ))  >  app.user.contract  %}
                                         <div class="h4 mb-0 font-weight-bold text-red">
                                             {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours', { 'id': app.user.id } )) }} / {{ app.user.contract }}

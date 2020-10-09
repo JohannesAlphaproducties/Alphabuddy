@@ -44,7 +44,7 @@ class WorkOrdersType extends AbstractType
                 ],
             ])
             ->add('time', DateTimeType::class, [
-//                'widget' => 'single_text',
+                'widget' => 'single_text',
 //                'date_format' => 'Y-m-d H:i:s',
                 'attr' => [
                     'class' => 'form-control h-25',
