@@ -80,8 +80,6 @@ class WorkOrdersController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($workOrder);
             $entityManager->flush();

@@ -27,7 +27,6 @@
                             </thead>
                             <tbody>
                             {% for hour in hours %}
-                                {% if hour.date > date('monday this week')%}
                                     <tr>
                                         <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
                                         <td>{{ hour.hours }}</td>
@@ -35,7 +34,6 @@
                                         <td>{{ hour.description }}</td>
                                         <td>{{ include('hours/_delete_form.html.twig') }}</td>
                                     </tr>
-                                {% endif %}
                             {% else %}
                                 <p>Geen Uren geregistreerd</p>
                             {% endfor %}
@@ -44,6 +42,7 @@
                             </tr>
                             </tbody>
                         </table>
+                        <a href="{{ path('excel') }}" class="btn btn-success">Excel</a>
                     </div>
                 </div>
             </div>

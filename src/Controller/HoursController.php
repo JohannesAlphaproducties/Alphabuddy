@@ -6,9 +6,12 @@ use App\Entity\Hours;
 use App\Form\HoursType;
 use App\Repository\WorkOrdersRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -16,6 +19,51 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class HoursController extends AbstractController
 {
+    /**
+     * @Route("/excel", name="excel")
+     */
+    public function excel()
+    {
+        $spreadsheet = new Spreadsheet();
+
+        $hours = $this->getDoctrine()->getRepository(Hours::class)->findAll();
+
+        $styleArrayTitle = [
+            'font' => [
+                'bold' => true,
+            ]
+        ];
+
+        $spreadsheet->getActiveSheet()->getStyle('A1:C1')->applyFromArray($styleArrayTitle);
+        $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+        //header titles
+        $spreadsheet->getActiveSheet()
+            ->setCellValue('A1', 'Datum')
+            ->setCellValue('B1', 'Uren')
+            ->setCellValue('C1', 'Overuren')
+            ->setCellValue('B10', '=SOM(B3:B7)');
+
+        $numm1 = 3;
+        $numm = 3;
+
+        foreach ($hours as $hour) {
+            if ($hour->getUser() === $this->getUser()) {
+                    $spreadsheet->getActiveSheet()
+                        ->setCellValue('A'.$numm++, $hour->getDate())
+                        ->setCellValue('B'.$numm1++ , $hour->getHours());
+            }
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        $filename = 'test.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $filename);
+
+        $writer->save($temp_file);
+
+        return $this->file($temp_file, $filename, ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
     /**
      * @Route("/", name="hours_index", methods={"GET"})
      * @param PaginatorInterface $paginator
@@ -174,4 +222,7 @@ class HoursController extends AbstractController
 
         return $this->redirectToRoute('hours_index');
     }
+
+
+
 }

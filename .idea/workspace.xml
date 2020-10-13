@@ -151,6 +151,15 @@
       <path value="$PROJECT_DIR$/vendor/symfony/profiler-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XLRbeAygd3btjDNUXzklsn3amH" />
@@ -165,7 +174,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CRM" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -293,6 +302,8 @@
       <workItem from="1601631932807" duration="12000" />
       <workItem from="1601641013578" duration="1426000" />
       <workItem from="1601968320967" duration="184000" />
+      <workItem from="1602232805743" duration="13982000" />
+      <workItem from="1602570592354" duration="1098000" />
     </task>
     <servers />
   </component>
@@ -300,6 +311,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602235400622">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602235400622" />
     <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1601968503765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -316,9 +331,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596005397702" />
-    <state x="792" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1599821389409">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1602249296571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="792" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1599821389409" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602249296571" />
+    <state x="792" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1602233406228">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="792" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602233406228" />
   </component>
 </project>
