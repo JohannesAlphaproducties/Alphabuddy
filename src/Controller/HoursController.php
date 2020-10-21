@@ -189,6 +189,10 @@ class HoursController extends AbstractController
         //20 tot 20 datums
         $start20 = date('Y-m-20', strtotime('-1 month'));
         $end20 = date('Y-m-20', strtotime('today'));
+        if (date('Y-m-d', strtotime('today')) > date('Y-m-20')) {
+            $start20 = date('Y-m-20', strtotime('today'));
+            $end20 = date('Y-m-20', strtotime('next month'));
+        }
 
         //get user
         $user = $this->getUser();
