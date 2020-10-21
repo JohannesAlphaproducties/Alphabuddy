@@ -150,7 +150,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/profiler-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
-      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
@@ -160,6 +159,8 @@
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
       <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/doctrineextensions" />
+      <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XLRbeAygd3btjDNUXzklsn3amH" />
@@ -303,7 +304,12 @@
       <workItem from="1601641013578" duration="1426000" />
       <workItem from="1601968320967" duration="184000" />
       <workItem from="1602232805743" duration="13982000" />
-      <workItem from="1602570592354" duration="1628000" />
+      <workItem from="1602570592354" duration="13009000" />
+      <workItem from="1602656165681" duration="1960000" />
+      <workItem from="1602663436552" duration="2982000" />
+      <workItem from="1602829704923" duration="4357000" />
+      <workItem from="1602855468808" duration="1558000" />
+      <workItem from="1603261344018" duration="5974000" />
     </task>
     <servers />
   </component>
@@ -311,10 +317,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602235400622">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602591873756">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602235400622" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602591873756" />
     <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1601968503765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -331,6 +337,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596005397702" />
+    <state x="668" y="239" width="583" height="562" key="find.popup" timestamp="1602856551945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="668" y="239" width="583" height="562" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602856551945" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1602249296571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

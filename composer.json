@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
+        "beberlei/doctrineextensions": "^1.2",
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "2.2.x-dev",
         "doctrine/orm": "*",

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Hours;
 use App\Form\HoursType;
 use App\Repository\WorkOrdersRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -26,8 +27,22 @@ class HoursController extends AbstractController
     {
         $spreadsheet = new Spreadsheet();
 
-        $hours = $this->getDoctrine()->getRepository(Hours::class)->findAll();
+        //20 tot 20 datums
+        $start20 = date('Y-m-20', strtotime('-1 month'));
+        $end20 = date('Y-m-20', strtotime('today'));
 
+        if (date('Y-m-d', strtotime('today')) > date('Y-m-20')) {
+            $start20 = date('Y-m-20', strtotime('today'));
+            $end20 = date('Y-m-20', strtotime('next month'));
+        }
+
+        //get user
+        $user = $this->getUser();
+
+        //get hours between 20 last month and 20 this month
+        $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20);
+
+        //style excel
         $styleArrayTitle = [
             'font' => [
                 'bold' => true,
@@ -36,27 +51,36 @@ class HoursController extends AbstractController
 
         $spreadsheet->getActiveSheet()->getStyle('A1:C1')->applyFromArray($styleArrayTitle);
         $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+
+        $numm = 3;
+        $numm1 = 3;
+        $numm2 = 3;
+
+        foreach ($hours as $hour) {
+                $spreadsheet->getActiveSheet()
+                    ->setCellValue('A'.$numm++, $hour['datum'])
+                    ->setCellValue('B'.$numm1++ , $hour['sumDayHours']);
+                if ($hour['sumDayHours'] <= 8) {
+                    $spreadsheet->getActiveSheet()
+                        ->setCellValue('C'.$numm2++, ' ');
+                } else {
+                    $spreadsheet->getActiveSheet()
+                        ->setCellValue('C'.$numm2++, $hour['sumDayHours'] - 8);
+                }
+        }
+
+        $formula = $numm1 + 2;
         //header titles
         $spreadsheet->getActiveSheet()
             ->setCellValue('A1', 'Datum')
             ->setCellValue('B1', 'Uren')
             ->setCellValue('C1', 'Overuren')
-            ->setCellValue('B10', '=SOM(B3:B7)');
-
-        $numm1 = 3;
-        $numm = 3;
-
-        foreach ($hours as $hour) {
-            if ($hour->getUser() === $this->getUser()) {
-                    $spreadsheet->getActiveSheet()
-                        ->setCellValue('A'.$numm++, $hour->getDate())
-                        ->setCellValue('B'.$numm1++ , $hour->getHours());
-            }
-        }
+            ->setCellValue('B'. $formula, '=SOM(B3:B'.$numm1.')')
+            ->setCellValue('C'. $formula, '=SOM(C3:C'.$numm1.')');
 
         $writer = new Xlsx($spreadsheet);
 
-        $filename = 'test.xlsx';
+        $filename = $start20.'-'.$end20.'.xlsx';
         $temp_file = tempnam(sys_get_temp_dir(), $filename);
 
         $writer->save($temp_file);
@@ -79,12 +103,26 @@ class HoursController extends AbstractController
         //get user
         $user = $this->getUser();
 
-        $results = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $monday, $friday);
+        //20 tot 20 datums
+        $start20 = date('Y-m-20', strtotime('-1 month'));
+        $end20 = date('Y-m-20', strtotime('today'));
+
+        if (date('Y-m-d', strtotime('today')) > date('Y-m-20')) {
+            $start20 = date('Y-m-20', strtotime('today'));
+            $end20 = date('Y-m-20', strtotime('next month'));
+        }
+
+
+        //get hours between 20 last month and 20 this month
+        $hours20 = $this->getDoctrine()->getRepository(Hours::class)->findHoursWeek($user, $start20, $end20);
+
+        $results = $this->getDoctrine()->getRepository(Hours::class)->findHoursWeek($user, $monday, $friday);
 
         $hours = $paginator->paginate($results, $request->query->getInt('page', 1), 10);
 
         return $this->render('hours/index.html.twig', [
             'hours' => $hours,
+            'hours20' => $hours20,
         ]);
     }
 
@@ -126,6 +164,37 @@ class HoursController extends AbstractController
 
         //get hours and execute query
         $hours = $this->getDoctrine()->getRepository(Hours::class)->findPersonalHours($user, $monday, $friday);
+
+        //get more or no result
+        $totalRevenue = $hours->getOneOrNullResult();
+
+        //use array
+        $total = $totalRevenue['total'];
+
+        //return values
+        if ($total > 0) {
+            return new Response($total);
+        } else {
+            return new Response(0);
+        }
+    }
+
+    /**
+     * @Route("/personalTotal/{id}", name="total_hours_personal")
+     * @return Response
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getTotalPersonalHours20($id)
+    {
+        //20 tot 20 datums
+        $start20 = date('Y-m-20', strtotime('-1 month'));
+        $end20 = date('Y-m-20', strtotime('today'));
+
+        //get user
+        $user = $this->getUser();
+
+        //get hours and execute query
+        $hours = $this->getDoctrine()->getRepository(Hours::class)->findPersonalHours($user, $start20, $end20);
 
         //get more or no result
         $totalRevenue = $hours->getOneOrNullResult();

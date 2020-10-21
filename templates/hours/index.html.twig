@@ -42,11 +42,55 @@
                             </tr>
                             </tbody>
                         </table>
-                        <a href="{{ path('excel') }}" class="btn btn-success disabled">Excel</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row mt-3">
+        <div class="col-sm">
+            <div class="card shadow">
+                <div class="card-header">
+                    <div class="card-title">Mijn uren van 20 tot 20</div>
+                    <div class="card-options">
+                        <h4 class="text-muted m-0">{{ "-1 month"|date("m/20/Y") }} - {{ "today"|date("m/20/Y") }}</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Datum</th>
+                                <th>Aantal uren</th>
+                                <th>Werkbon</th>
+                                <th>Beschrijving</th>
+                                <th>Actie</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for hour in hours20 %}
+                                <tr>
+                                    <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
+                                    <td>{{ hour.hours }}</td>
+                                    <td><a href="{{ path('work_orders_show', {'id': hour.workOrder.id }) }}">{{ hour.workOrder }}</a></td>
+                                    <td>{{ hour.description }}</td>
+                                    <td>{{ include('hours/_delete_form.html.twig') }}</td>
+                                </tr>
+                            {% else %}
+                                <p>Geen Uren geregistreerd</p>
+                            {% endfor %}
+                            <tr>
+                                <td><p class="font-weight-bold">Totaal {{ render(controller('App\\Controller\\HoursController::getTotalPersonalHours20', { 'id': app.user.id } )) }}</p></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="{{ path('excel') }}" class="btn btn-success">Excel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

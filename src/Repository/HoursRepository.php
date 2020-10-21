@@ -36,11 +36,25 @@ class HoursRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('q')
             ->where('q.user = :user')
             ->andWhere('q.date BETWEEN :monday AND :friday')
+            ->select('DATE(q.date) AS datum, SUM(q.hours) AS sumDayHours')
+            ->groupBy('datum')
             ->setParameter('user', $user)
             ->setParameter('monday', $monday)
             ->setParameter('friday', $friday)
-            ->getQuery();
+            ->getQuery()->getResult();
     }
+
+    public function findHoursWeek($user, $monday, $friday)
+    {
+        return $this->createQueryBuilder('q')
+            ->where('q.user = :user')
+            ->andWhere('q.date BETWEEN :monday AND :friday')
+            ->setParameter('user', $user)
+            ->setParameter('monday', $monday)
+            ->setParameter('friday', $friday)
+            ->getQuery()->getResult();
+    }
+
 
 
     // /**
