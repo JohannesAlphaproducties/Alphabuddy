@@ -202,6 +202,7 @@ class WorkOrdersController extends AbstractController
        $domPdf->stream('Werkbon'.$workOrder->getId()."-".$workOrder->getTitel().".pdf", [
            'Attachment' => true
        ]);
+       exit();
 
        return $this->redirectToRoute('work_orders_show', [
            'id' => $workOrder->getId(),
