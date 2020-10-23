@@ -36,12 +36,14 @@ class HoursController extends AbstractController
             $end20 = date('Y-m-20', strtotime('next month'));
         }
 
+        $startDay = date('8:00');
+        $endDay = date('17:00');
+
         //get user
         $user = $this->getUser();
 
         //get hours between 20 last month and 20 this month
-        $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20);
-
+        $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20, $startDay, $endDay);
         //style excel
         $styleArrayTitle = [
             'font' => [
@@ -56,17 +58,17 @@ class HoursController extends AbstractController
         $numm1 = 3;
         $numm2 = 3;
 
+        $selectedTime = "9:15:00";
+        $endTime = strtotime("+15 minutes", strtotime($selectedTime));
+
+
+
+
         foreach ($hours as $hour) {
-                $spreadsheet->getActiveSheet()
+
+            $spreadsheet->getActiveSheet()
                     ->setCellValue('A'.$numm++, $hour['datum'])
                     ->setCellValue('B'.$numm1++ , $hour['sumDayHours']);
-                if ($hour['sumDayHours'] <= 8) {
-                    $spreadsheet->getActiveSheet()
-                        ->setCellValue('C'.$numm2++, ' ');
-                } else {
-                    $spreadsheet->getActiveSheet()
-                        ->setCellValue('C'.$numm2++, $hour['sumDayHours'] - 8);
-                }
         }
 
         $formula = $numm1 + 2;
@@ -115,7 +117,6 @@ class HoursController extends AbstractController
 
         //get hours between 20 last month and 20 this month
         $hours20 = $this->getDoctrine()->getRepository(Hours::class)->findHoursWeek($user, $start20, $end20);
-
         $results = $this->getDoctrine()->getRepository(Hours::class)->findHoursWeek($user, $monday, $friday);
 
         $hours = $paginator->paginate($results, $request->query->getInt('page', 1), 10);
