@@ -203,10 +203,6 @@ class WorkOrdersController extends AbstractController
            'Attachment' => true
        ]);
        exit();
-
-       return $this->redirectToRoute('work_orders_show', [
-           'id' => $workOrder->getId(),
-       ]);
     }
 
     /**

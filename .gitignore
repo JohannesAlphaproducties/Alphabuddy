@@ -8,7 +8,7 @@
 /vendor/
 .env
 /data
-/templates/pdf/*
+/templates/pdf/
 ###< symfony/framework-bundle ###
 sendgrid.env
 "sendgrid.env" 
