@@ -44,7 +44,7 @@ class WorkOrdersController extends AbstractController
     {
         $results = $this->getDoctrine()->getRepository(WorkOrders::class)->findOpenWorkOrders();
 
-        $workOrders = $paginator->paginate($results, $request->query->getInt('page', 1), 10);
+        $workOrders = $paginator->paginate($results, $request->query->getInt('page', 1), 999);
 
         return $this->render('work_orders/index.html.twig', [
             'work_orders' => $workOrders,
