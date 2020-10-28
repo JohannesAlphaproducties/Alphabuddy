@@ -31,20 +31,17 @@ class HoursRepository extends ServiceEntityRepository
             ->getQuery();
     }
 
-    public function findUserHours($user, $start20, $end20, $startDay, $endDay)
+    public function findUserHours($user, $start20, $end20)
     {
         return $this->createQueryBuilder('q')
             ->where('q.user = :user')
             ->andWhere('q.date BETWEEN :start20 AND :end20')
             //allen van 8 tot 5 ophalen
-            ->andWhere('TIME(q.date) BETWEEN :startDay AND :endDay')
             ->select('DATE(q.date) AS datum, TIME(q.date) as dateTime ,SUM(q.hours) AS sumDayHours, q.hours AS hoursValue')
             ->groupBy('datum')
             ->setParameter('user', $user)
             ->setParameter('start20', $start20)
             ->setParameter('end20', $end20)
-            ->setParameter('startDay', $startDay)
-            ->setParameter('endDay', $endDay)
             ->getQuery()->getResult();
     }
 

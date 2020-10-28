@@ -175,7 +175,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CRM" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -310,7 +310,7 @@
       <workItem from="1602829704923" duration="4357000" />
       <workItem from="1602855468808" duration="1558000" />
       <workItem from="1603261344018" duration="15268000" />
-      <workItem from="1603445739267" duration="1651000" />
+      <workItem from="1603445739267" duration="7561000" />
     </task>
     <servers />
   </component>
@@ -322,10 +322,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602591873756" />
-    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1601968503765">
+    <state x="863" y="291" key="FileChooserDialogImpl" timestamp="1603457154574">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601968503765" />
+    <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603457154574" />
     <state x="2717" y="157" key="RollbackChangesDialog" timestamp="1595587560651">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -338,10 +338,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1596005397702" />
-    <state x="668" y="239" width="583" height="562" key="find.popup" timestamp="1602856551945">
+    <state x="668" y="239" width="583" height="562" key="find.popup" timestamp="1603455359930">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="239" width="583" height="562" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602856551945" />
+    <state x="668" y="239" width="583" height="562" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603455359930" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1602249296571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

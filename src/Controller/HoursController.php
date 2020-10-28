@@ -36,14 +36,13 @@ class HoursController extends AbstractController
             $end20 = date('Y-m-20', strtotime('next month'));
         }
 
-        $startDay = date('8:00');
-        $endDay = date('17:00');
+ 
 
         //get user
         $user = $this->getUser();
 
         //get hours between 20 last month and 20 this month
-        $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20, $startDay, $endDay);
+        $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20);
         //style excel
         $styleArrayTitle = [
             'font' => [
@@ -60,9 +59,6 @@ class HoursController extends AbstractController
 
         $selectedTime = "9:15:00";
         $endTime = strtotime("+15 minutes", strtotime($selectedTime));
-
-
-
 
         foreach ($hours as $hour) {
 
