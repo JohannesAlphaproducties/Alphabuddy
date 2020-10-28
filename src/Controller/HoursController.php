@@ -7,6 +7,7 @@ use App\Form\HoursType;
 use App\Repository\WorkOrdersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use phpDocumentor\Reflection\Types\This;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,19 +31,17 @@ class HoursController extends AbstractController
         //20 tot 20 datums
         $start20 = date('Y-m-20', strtotime('-1 month'));
         $end20 = date('Y-m-20', strtotime('today'));
-
         if (date('Y-m-d', strtotime('today')) > date('Y-m-20')) {
             $start20 = date('Y-m-20', strtotime('today'));
             $end20 = date('Y-m-20', strtotime('next month'));
         }
-
- 
 
         //get user
         $user = $this->getUser();
 
         //get hours between 20 last month and 20 this month
         $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20);
+
         //style excel
         $styleArrayTitle = [
             'font' => [
@@ -55,13 +54,8 @@ class HoursController extends AbstractController
 
         $numm = 3;
         $numm1 = 3;
-        $numm2 = 3;
-
-        $selectedTime = "9:15:00";
-        $endTime = strtotime("+15 minutes", strtotime($selectedTime));
 
         foreach ($hours as $hour) {
-
             $spreadsheet->getActiveSheet()
                     ->setCellValue('A'.$numm++, $hour['datum'])
                     ->setCellValue('B'.$numm1++ , $hour['sumDayHours']);
@@ -78,12 +72,32 @@ class HoursController extends AbstractController
 
         $writer = new Xlsx($spreadsheet);
 
-        $filename = $start20.'-'.$end20.'.xlsx';
+        $filename = date('m-Y', strtotime('this month')).'.xlsx';
         $temp_file = tempnam(sys_get_temp_dir(), $filename);
 
         $writer->save($temp_file);
 
         return $this->file($temp_file, $filename, ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
+    /**
+     * @Route("/testExcel", name="test_excel")
+     */
+    public function testExel(Request $request)
+    {
+        $month = $request->request->get('month');
+        dd($month);
+        $user = $this->getUser();
+        $results = $this->getDoctrine()->getRepository(Hours::class)->findHoursMonthUser($user, $month);
+
+        foreach ($results as $result) {
+            dump($result);
+        }
+        die();
+
+
+
+        return $this->render('hours/showMonthHours.html.twig');
     }
 
     /**
@@ -110,16 +124,19 @@ class HoursController extends AbstractController
             $end20 = date('Y-m-20', strtotime('next month'));
         }
 
-
         //get hours between 20 last month and 20 this month
         $hours20 = $this->getDoctrine()->getRepository(Hours::class)->findHoursWeek($user, $start20, $end20);
         $results = $this->getDoctrine()->getRepository(Hours::class)->findHoursWeek($user, $monday, $friday);
+
+        //get months for select
+        $hoursMonth = $this->getDoctrine()->getRepository(Hours::class)->findHoursMonth($user);
 
         $hours = $paginator->paginate($results, $request->query->getInt('page', 1), 10);
 
         return $this->render('hours/index.html.twig', [
             'hours' => $hours,
             'hours20' => $hours20,
+            'hoursMonth' => $hoursMonth,
         ]);
     }
 

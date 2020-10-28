@@ -56,6 +56,27 @@ class HoursRepository extends ServiceEntityRepository
             ->getQuery()->getResult();
     }
 
+    public function findHoursMonth($user)
+    {
+        return $this->createQueryBuilder('q')
+            ->where('q.user = :user')
+            ->select('MONTH(q.date) AS datum')
+            ->groupBy('datum')
+            ->setParameter('user', $user)
+            ->getQuery()->getResult();
+    }
+
+    public function findHoursMonthUser($user, $month)
+    {
+        return $this->createQueryBuilder('q')
+            ->where('q.user = :user')
+            ->select('q.hours')
+            ->where('MONTH(:month)')
+            ->setParameter('month', $month)
+            ->setParameter('user', $user)
+            ->getQuery()->getResult();
+    }
+
 
 
     // /**

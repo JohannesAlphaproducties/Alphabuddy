@@ -161,6 +161,7 @@
       <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
       <path value="$PROJECT_DIR$/vendor/beberlei/doctrineextensions" />
       <path value="$PROJECT_DIR$/vendor/ocramius/package-versions" />
+      <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XLRbeAygd3btjDNUXzklsn3amH" />
@@ -175,8 +176,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CRM" />
-    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -311,6 +312,7 @@
       <workItem from="1602855468808" duration="1558000" />
       <workItem from="1603261344018" duration="15268000" />
       <workItem from="1603445739267" duration="7561000" />
+      <workItem from="1603877716931" duration="11726000" />
     </task>
     <servers />
   </component>
@@ -330,10 +332,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2717" y="157" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595587560651" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1601030216749">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1603884023655">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601030216749" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1603884023655" />
     <state x="610" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596005397702">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
