@@ -70,10 +70,12 @@ class HoursRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('q')
             ->where('q.user = :user')
-            ->select('q.hours')
-            ->where('MONTH(:month)')
-            ->setParameter('month', $month)
+            ->select('q.hours AS hour, q.date AS date')
+//            ->select('q.date AS date')
+            ->where(':user = q.user')
+            ->andWhere('MONTH(q.date) = :month')
             ->setParameter('user', $user)
+            ->setParameter('month', $month)
             ->getQuery()->getResult();
     }
 

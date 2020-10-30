@@ -52,17 +52,17 @@
             <div class="card shadow">
                 <div class="card-header">
                     <div class="card-title">Mijn uren van 20 tot 20</div>
-                    <div class="card-options">
-                        <form action="{{ path('test_excel') }}" method="post">
-                            <label for="month">Kies de maand</label>
-                            <select name="month" id="month">
-                                {% for hourMonth in hoursMonth %}
-                                    <option value="{{ hourMonth.datum }}" name="month" id="month">{{ hourMonth.datum }}</option>
-                                {% endfor %}
-                            </select>
-                            <button class="btn btn-sm btn-success" type="submit">></button>
-                        </form>
-                    </div>
+{#                    <div class="card-options">#}
+{#                        <form action="{{ path('month_excel') }}" method="post">#}
+{#                            <label for="month">Kies de maand</label>#}
+{#                            <select name="month" id="month">#}
+{#                                {% for hourMonth in hoursMonth %}#}
+{#                                    <option value="{{ hourMonth.datum }}" name="month" id="month">{{ hourMonth.datum }}</option>#}
+{#                                {% endfor %}#}
+{#                            </select>#}
+{#                            <button class="btn btn-sm btn-success" type="submit">></button>#}
+{#                        </form>#}
+{#                    </div>#}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -94,7 +94,6 @@
                             </tbody>
                         </table>
                         <a href="{{ path('excel') }}" class="btn btn-success">Excel</a><span class="text-muted"> (Uren worden alleen nog maar opgeteld per dag)</span>
-                        <a href="{{ path('test_excel') }}">test</a>
                     </div>
                 </div>
             </div>

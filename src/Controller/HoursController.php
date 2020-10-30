@@ -81,23 +81,18 @@ class HoursController extends AbstractController
     }
 
     /**
-     * @Route("/testExcel", name="test_excel")
+     * @Route("/month", name="month_excel")
      */
-    public function testExel(Request $request)
+    public function month_excel(Request $request)
     {
         $month = $request->request->get('month');
-        dd($month);
+
         $user = $this->getUser();
         $results = $this->getDoctrine()->getRepository(Hours::class)->findHoursMonthUser($user, $month);
 
-        foreach ($results as $result) {
-            dump($result);
-        }
-        die();
-
-
-
-        return $this->render('hours/showMonthHours.html.twig');
+        return $this->render('hours/showMonthHours.html.twig', [
+            'hours' => $results,
+        ]);
     }
 
     /**
