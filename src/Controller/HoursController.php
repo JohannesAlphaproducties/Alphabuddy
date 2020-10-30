@@ -105,7 +105,7 @@ class HoursController extends AbstractController
 
         foreach ($results as $hour) {
             $spreadsheet->getActiveSheet()
-                ->setCellValue('A'.$numm++, date_format($hour['date'], 'Y-m-d'))
+                ->setCellValue('A'.$numm++, $hour['date'])
                 ->setCellValue('B'.$numm1++ , $hour['sumDayHours']);
         }
 
