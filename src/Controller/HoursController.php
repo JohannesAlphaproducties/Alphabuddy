@@ -42,6 +42,7 @@ class HoursController extends AbstractController
         //get hours between 20 last month and 20 this month
         $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20);
 
+
         //style excel
         $styleArrayTitle = [
             'font' => [
@@ -81,6 +82,53 @@ class HoursController extends AbstractController
     }
 
     /**
+     * @Route("/excel/{month}", name="excel_month")
+     */
+    public function excel_month($month)
+    {
+        $user = $this->getUser();
+        $results = $this->getDoctrine()->getRepository(Hours::class)->findHoursMonthUserExcel($user, $month);
+
+        $spreadsheet = new Spreadsheet();
+        //style excel
+        $styleArrayTitle = [
+            'font' => [
+                'bold' => true,
+            ]
+        ];
+
+        $spreadsheet->getActiveSheet()->getStyle('A1:C1')->applyFromArray($styleArrayTitle);
+        $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+
+        $numm = 3;
+        $numm1 = 3;
+
+        foreach ($results as $hour) {
+            $spreadsheet->getActiveSheet()
+                ->setCellValue('A'.$numm++, date_format($hour['date'], 'Y-m-d'))
+                ->setCellValue('B'.$numm1++ , $hour['sumDayHours']);
+        }
+
+        $formula = $numm1 + 2;
+        //header titles
+        $spreadsheet->getActiveSheet()
+            ->setCellValue('A1', 'Datum')
+            ->setCellValue('B1', 'Uren')
+            ->setCellValue('C1', 'Overuren')
+            ->setCellValue('B'. $formula, '=SOM(B3:B'.$numm1.')')
+            ->setCellValue('C'. $formula, '=SOM(C3:C'.$numm1.')');
+
+        $writer = new Xlsx($spreadsheet);
+
+        $filename = date('Y-'. $month . '-d').'.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $filename);
+
+        $writer->save($temp_file);
+
+        return $this->file($temp_file, $filename, ResponseHeaderBag::DISPOSITION_INLINE);
+    }
+
+    /**
      * @Route("/month", name="month_excel")
      */
     public function month_excel(Request $request)
@@ -91,6 +139,7 @@ class HoursController extends AbstractController
         $results = $this->getDoctrine()->getRepository(Hours::class)->findHoursMonthUser($user, $month);
 
         return $this->render('hours/showMonthHours.html.twig', [
+            'month' => $month,
             'hours' => $results,
         ]);
     }

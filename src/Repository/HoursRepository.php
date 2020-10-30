@@ -71,9 +71,21 @@ class HoursRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('q')
             ->where('q.user = :user')
             ->select('q.hours AS hour, q.date AS date')
-//            ->select('q.date AS date')
             ->where(':user = q.user')
             ->andWhere('MONTH(q.date) = :month')
+            ->setParameter('user', $user)
+            ->setParameter('month', $month)
+            ->getQuery()->getResult();
+    }
+
+    public function findHoursMonthUserExcel($user, $month)
+    {
+        return $this->createQueryBuilder('q')
+            ->where('q.user = :user')
+            ->select('q.hours AS hour, q.date AS date, SUM(q.hours) AS sumDayHours')
+            ->where(':user = q.user')
+            ->andWhere('MONTH(q.date) = :month')
+            ->groupBy('date')
             ->setParameter('user', $user)
             ->setParameter('month', $month)
             ->getQuery()->getResult();

@@ -3,27 +3,33 @@
 {% block title %}Hours{% endblock %}
 
 {% block body %}
-<div class="card-body">
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Datum</th>
-                <th>Aantal uren</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for hour in hours %}
-                <tr>
-                    <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
-                    <td>{{ hour.hour }}</td>
-                </tr>
-            {% else %}
-                <p>Geen Uren geregistreerd</p>
-            {% endfor %}
-            </tbody>
-        </table>
-        <a href="{{ path('excel') }}" class="btn btn-success">Excel</a><span class="text-muted"> (Uren worden alleen nog maar opgeteld per dag)</span>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Uren van {{ date('2012-' ~ month ~ '-01') |date('M') }}</div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Aantal uren</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for hour in hours %}
+                        <tr>
+                            <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
+                            <td>{{ hour.hour }}</td>
+                        </tr>
+                    {% else %}
+                        <p>Geen Uren geregistreerd</p>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('excel_month', {'month': month}) }}" class="btn btn-success">Excel</a><span class="text-muted"> (Uren worden alleen nog maar opgeteld per dag)</span>
+            </div>
+        </div>
     </div>
-</div>
+
 {% endblock %}
