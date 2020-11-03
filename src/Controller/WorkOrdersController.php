@@ -13,6 +13,7 @@ use Dompdf\Options;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -350,6 +351,19 @@ class WorkOrdersController extends AbstractController
             'ticket' => $ticket,
             'form' => $form->createView(),
         ]);
-
     }
+
+    /**
+     * @Route("/json/workOrders", name="json_work_orders")
+     */
+    public function workOrderJson()
+    {
+        $workOrders = $this->getDoctrine()->getRepository(WorkOrders::class);
+        $results = $workOrders->createQueryBuilder('q')
+            ->getQuery()
+            ->getArrayResult();
+
+        return new JsonResponse($results);
+    }
+    
 }

@@ -8,8 +8,8 @@ framework:
     # Remove or comment this section to explicitly disable session support.
     session:
         handler_id: null
-        cookie_lifetime: 999999
-        gc_maxlifetime: 999999
+        cookie_lifetime: 604800
+        gc_maxlifetime: 604800
         cookie_secure: auto
         cookie_samesite: lax
 

@@ -27,13 +27,13 @@
                             </thead>
                             <tbody>
                             {% for hour in hours %}
-                                    <tr>
-                                        <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
-                                        <td>{{ hour.hours }}</td>
-                                        <td><a href="{{ path('work_orders_show', {'id': hour.workOrder.id }) }}">{{ hour.workOrder }}</a></td>
-                                        <td>{{ hour.description }}</td>
-                                        <td>{{ include('hours/_delete_form.html.twig') }}</td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ hour.date ? hour.date|date('Y-m-d H:i:s') : ''  }}</td>
+                                    <td>{{ hour.hours }}</td>
+                                    <td><a href="{{ path('work_orders_show', {'id': hour.workOrder.id }) }}">{{ hour.workOrder }}</a></td>
+                                    <td>{{ hour.description }}</td>
+                                    <td>{{ include('hours/_delete_form.html.twig') }}</td>
+                                </tr>
                             {% else %}
                                 <p>Geen Uren geregistreerd</p>
                             {% endfor %}

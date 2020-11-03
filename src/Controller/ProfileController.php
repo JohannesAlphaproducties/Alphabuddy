@@ -95,9 +95,6 @@ class ProfileController extends AbstractController
         return $this->redirectToRoute('profile');
     }
 
-
-
-
     /**
      * @Route("/save/contract", name="save_contract")
      */

@@ -208,14 +208,12 @@ class TicketController extends AbstractController
      */
     public function jsonTickets()
     {
-        $tickets = $this->getDoctrine()->getRepository(Ticket::class)->findOpenTickets();
+        $tickets = $this->getDoctrine()->getRepository(Ticket::class);
+        $results = $tickets->createQueryBuilder('q')
+            ->getQuery()
+            ->getArrayResult();
 
-        $encoder = new JsonEncoder();
-
-        $normalizer = new ObjectNormalizer(null, null, null, null, null, null);
-
-        $serializer = new Serializer([$normalizer], [$encoder]);
-        echo $serializer->serialize($tickets, 'json');
+        return new JsonResponse($results);
     }
 
 
