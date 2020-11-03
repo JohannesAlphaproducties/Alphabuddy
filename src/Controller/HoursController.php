@@ -5,9 +5,8 @@ namespace App\Controller;
 use App\Entity\Hours;
 use App\Form\HoursType;
 use App\Repository\WorkOrdersRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use DoctrineExtensions\Query\Mysql\Hour;
 use Knp\Component\Pager\PaginatorInterface;
-use phpDocumentor\Reflection\Types\This;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,7 +40,6 @@ class HoursController extends AbstractController
 
         //get hours between 20 last month and 20 this month
         $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20);
-
 
         //style excel
         $styleArrayTitle = [

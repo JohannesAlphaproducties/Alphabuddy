@@ -314,7 +314,7 @@
       <workItem from="1603445739267" duration="7561000" />
       <workItem from="1603877716931" duration="18116000" />
       <workItem from="1604042970510" duration="13881000" />
-      <workItem from="1604389018372" duration="376000" />
+      <workItem from="1604389018372" duration="7737000" />
     </task>
     <servers />
   </component>
@@ -330,10 +330,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="863" y="291" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604064836381" />
-    <state x="2717" y="157" key="RollbackChangesDialog" timestamp="1595587560651">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="758" y="227" key="NewPhpClassDialog" timestamp="1604392055111">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="2717" y="157" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1595587560651" />
+    <state x="758" y="227" key="NewPhpClassDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604392055111" />
     <state x="607" y="221" width="998" height="708" key="SettingsEditor" timestamp="1604065505941">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -350,10 +350,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="239" width="583" height="562" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604052810596" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1602249296571">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1604390280220">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1602249296571" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604390280220" />
     <state x="792" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1604046426865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

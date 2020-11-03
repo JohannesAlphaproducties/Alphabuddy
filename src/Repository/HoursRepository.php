@@ -83,7 +83,6 @@ class HoursRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('q')
             ->where('q.user = :user')
             ->select('q.hours AS hour, DATE(q.date) AS date, SUM(q.hours) AS sumDayHours')
-            ->orderBy('date AS DESC')
             ->where(':user = q.user')
             ->andWhere('MONTH(q.date) = :month')
             ->groupBy('date')
@@ -91,35 +90,4 @@ class HoursRepository extends ServiceEntityRepository
             ->setParameter('month', $month)
             ->getQuery()->getResult();
     }
-
-
-
-    // /**
-    //  * @return Hours[] Returns an array of Hours objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Hours
-    {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

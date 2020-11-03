@@ -1,6 +1,6 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
-
     #csrf_protection: true
     #http_method_override: true
 
@@ -8,8 +8,6 @@ framework:
     # Remove or comment this section to explicitly disable session support.
     session:
         handler_id: null
-        cookie_lifetime: 604800
-        gc_maxlifetime: 604800
         cookie_secure: auto
         cookie_samesite: lax
 
@@ -17,6 +15,3 @@ framework:
     #fragments: true
     php_errors:
         log: true
-
-    serializer:
-        circular_reference_handler: App\Serializer\CircularReferenceHandler
