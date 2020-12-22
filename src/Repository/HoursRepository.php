@@ -83,7 +83,7 @@ class HoursRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('q')
             ->where('q.user = :user')
             ->select('q.hours AS hour, DATE(q.date) AS date, SUM(q.hours) AS sumDayHours')
-            ->orderBy('date AS DESC')
+            ->orderBy('date','ASC')
             ->where(':user = q.user')
             ->andWhere('MONTH(q.date) = :month')
             ->groupBy('date')
@@ -91,8 +91,6 @@ class HoursRepository extends ServiceEntityRepository
             ->setParameter('month', $month)
             ->getQuery()->getResult();
     }
-
-
 
     // /**
     //  * @return Hours[] Returns an array of Hours objects

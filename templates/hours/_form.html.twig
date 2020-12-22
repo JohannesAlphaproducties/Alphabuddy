@@ -1,5 +1,10 @@
 {{ form_start(form) }}
-{{ form_row(form.workorder, { 'value' : id }) }}
+{% if id %}
+    {{ form_row(form.workorder, { 'value' : id.company.name }) }}
+{% else %}
+    {{ form_row(form.workorder) }}
+{% endif %}
+
     {{ form_widget(form) }}
     <button class="dropdown-item text-success mt-3">{{ button_label|default('Opslaan') }}</button>
 {{ form_end(form) }}

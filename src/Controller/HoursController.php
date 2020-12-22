@@ -5,9 +5,7 @@ namespace App\Controller;
 use App\Entity\Hours;
 use App\Form\HoursType;
 use App\Repository\WorkOrdersRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use phpDocumentor\Reflection\Types\This;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,11 +27,11 @@ class HoursController extends AbstractController
         $spreadsheet = new Spreadsheet();
 
         //20 tot 20 datums
-        $start20 = date('Y-m-20', strtotime('-1 month'));
-        $end20 = date('Y-m-20', strtotime('today'));
-        if (date('Y-m-d', strtotime('today')) > date('Y-m-20')) {
-            $start20 = date('Y-m-20', strtotime('today'));
-            $end20 = date('Y-m-20', strtotime('next month'));
+        $start20 = date('Y-m-21', strtotime('-1 month'));
+        $end20 = date('Y-m-21', strtotime('today'));
+        if (date('Y-m-d', strtotime('today')) > date('Y-m-21')) {
+            $start20 = date('Y-m-19', strtotime('today'));
+            $end20 = date('Y-m-21', strtotime('next month'));
         }
 
         //get user
@@ -41,6 +39,15 @@ class HoursController extends AbstractController
 
         //get hours between 20 last month and 20 this month
         $hours = $this->getDoctrine()->getRepository(Hours::class)->findUserHours($user, $start20, $end20);
+
+//
+//        foreach ($hours as $hour) {
+//            $startTime = $hour['dateTime'];
+//            $addTime = $hour['hoursValue'];
+//
+//            $som = $startTime + $addTime;
+//            dd($som);
+//        }
 
 
         //style excel
@@ -160,12 +167,12 @@ class HoursController extends AbstractController
         $user = $this->getUser();
 
         //20 tot 20 datums
-        $start20 = date('Y-m-20', strtotime('-1 month'));
-        $end20 = date('Y-m-20', strtotime('today'));
+        $start20 = date('Y-m-21', strtotime('-1 month'));
+        $end20 = date('Y-m-21', strtotime('today'));
 
-        if (date('Y-m-d', strtotime('today')) > date('Y-m-20')) {
-            $start20 = date('Y-m-20', strtotime('today'));
-            $end20 = date('Y-m-20', strtotime('next month'));
+        if (date('Y-m-d', strtotime('today')) > date('Y-m-21')) {
+            $start20 = date('Y-m-21', strtotime('today'));
+            $end20 = date('Y-m-21', strtotime('next month'));
         }
 
         //get hours between 20 last month and 20 this month
@@ -320,7 +327,7 @@ class HoursController extends AbstractController
     {
         $form = $this->createForm(HoursType::class, $hour);
         $form->handleRequest($request);
-        $id = $hour->getWorkorder()->getId();
+        $id = $hour->getWorkorder();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();

@@ -293,19 +293,20 @@ class WorkOrdersController extends AbstractController
             file_put_contents('../data/workorders/' . $filename . '.pdf', $output);
         }
 
-        foreach ($subScribedUsers as $subScribedUser) {
-            // Create a message
-            $message = (new Email())
-                ->subject('Werkbon ' . $workOrder->getTitel() . ' ' . $workOrder->getCompany()->getName() . ' ' . $name)
-                ->from('johannes.vlot@alphaproducties.nl')
-                ->to($subScribedUser->getEmail())
-                ->text('Dit is de email voor de medewerkers die een copy willen ontvangen van een afgehandelde werkbon')
-                ->attachFromPath('../data/workorders/' . $id . '.pdf')
-            ;
-
-            // Send the message
-            $mailer->send($message);
-        }
+        //tijdelijk eruit omdat mailer api werkt niet meer
+//        foreach ($subScribedUsers as $subScribedUser) {
+//            // Create a message
+//            $message = (new Email())
+//                ->subject('Werkbon ' . $workOrder->getTitel() . ' ' . $workOrder->getCompany()->getName() . ' ' . $name)
+//                ->from('johannes.vlot@alphaproducties.nl')
+//                ->to($subScribedUser->getEmail())
+//                ->text('Dit is de email voor de medewerkers die een copy willen ontvangen van een afgehandelde werkbon')
+//                ->attachFromPath('../data/workorders/' . $id . '.pdf')
+//            ;
+//
+//            // Send the message
+//            $mailer->send($message);
+//        }
 
         //send workOrder to company //pdf nog niet op orde voor het gebruiken van deze funcite dna moet er eerst een achtergrond op kunnen enzo.
 //        if ($check == true) {
