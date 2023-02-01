@@ -10,7 +10,7 @@
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "2.2.x-dev",
         "doctrine/orm": "*",
-        "dompdf/dompdf": "^0.8.4",
+        "dompdf/dompdf": "^2.0.2",
         "gedmo/doctrine-extensions": "^2.4",
         "kardasz/swiftmailer-transport-sendgrid": "^1.0",
         "knplabs/knp-paginator-bundle": "^5.1",
